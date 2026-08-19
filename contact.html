@@ -41,7 +41,23 @@ nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,
  .inner-page{padding:50px 22px}.inner-hero{grid-template-columns:1fr;gap:25px}.inner-grid-3,.inner-grid-2,.contact-grid{grid-template-columns:1fr}.contact-list{grid-template-columns:1fr}.inner-cta{display:block}.inner-btn{margin-top:20px}.inner-footer{display:block}.inner-footer div+div{margin-top:8px}
 }
 </style>
-</head><body><nav><div class="wrap navin"><a class="logo" href="index.html">TANMAY<span>.</span></a><div class="links"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></nav>
+
+<style id="mobile-nav-fix">
+.mobile-menu-btn{display:none;margin-left:auto;width:42px;height:42px;border:1px solid rgba(21,34,53,.18);border-radius:9px;background:var(--panel,#fffdfa);color:var(--text,#152235);font-size:22px;line-height:1;cursor:pointer;align-items:center;justify-content:center}
+.mobile-menu{display:none}
+.mobile-menu a{display:block;padding:14px 2px;border-bottom:1px solid var(--line,#d8dee5);font-size:15px;font-weight:700;color:var(--text,#152235)}
+.mobile-menu a:last-child{border-bottom:0}
+@media(max-width:800px){.mobile-menu-btn{display:flex}.mobile-menu{display:none;padding:8px 18px 16px;background:var(--bg,#f7f5ef);border-top:1px solid var(--line,#d8dee5)}.mobile-menu.open{display:block}.navin{height:64px}.links{display:none!important}}
+@media(max-width:650px){.mobile-menu-btn{display:flex}.mobile-menu{padding-left:18px;padding-right:18px}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const btn=document.querySelector('.mobile-menu-btn'); const menu=document.querySelector('.mobile-menu');
+ if(!btn||!menu)return;
+ btn.addEventListener('click',function(){const open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.setAttribute('aria-label',open?'Close menu':'Open menu');btn.textContent=open?'×':'☰';});
+});
+</script>
+</head><body><nav><div class="wrap navin"><a class="logo" href="index.html">TANMAY<span>.</span></a><div class="links"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><div class="mobile-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 <main class="inner-page">
 <section class="inner-hero">
 <div><div class="inner-kicker">CONTACT</div>
