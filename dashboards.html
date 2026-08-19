@@ -19,9 +19,60 @@ document.addEventListener('DOMContentLoaded',function(){
  btn.addEventListener('click',function(){const open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.setAttribute('aria-label',open?'Close menu':'Open menu');btn.textContent=open?'×':'☰';});
 });
 </script>
-</head><body><nav><div class="wrap navin"><a class="logo" href="index.html">TANMAY<span>.</span></a><div class="links"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><div class="mobile-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><header class="hero"><div class="wrap"><div class="eyebrow">Dashboards</div><h1>Interactive tools for decision support.</h1><p>Standalone dashboards belong here. The Tata Motors interactive dashboard remains inside the Tata Motors project.</p></div></header><section class="section"><div class="wrap"><div class="card featured"><div class="num">01 — BUSINESS ANALYTICS DASHBOARD</div><h3>Business Analytics Dashboard</h3><p>Interactive KPI, trend and performance dashboard for business analysis.</p><a class="btn primary" href="Dashboard2.html">Open Interactive Dashboard →</a></div></div></section><footer class="footer"><div class="wrap">© 2026 Tanmay Gupta · Finance × Data × Business Research</div>
+</head><body><nav><div class="wrap navin"><a class="logo" href="index.html">TANMAY<span>.</span></a><div class="links"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><div class="mobile-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><header class="hero"><div class="wrap"><div class="eyebrow">Dashboards</div><h1>Interactive tools for business decision support.</h1><p>Standalone dashboards built for business analysis and decision support. The Retail Store Business Analytics Dashboard is an independent project and is separate from the Tata Motors financial analysis.</p></div></header><section class="section"><div class="wrap"><div class="card featured"><div class="num">01 — BUSINESS ANALYTICS DASHBOARD</div><h3>Business Analytics Dashboard</h3><p>Interactive KPI, trend and performance dashboard for business analysis.</p><a class="btn primary" href="Dashboard2.html">Open Interactive Dashboard →</a></div></div></section><footer class="footer"><div class="wrap">© 2026 Tanmay Gupta · Finance × Data × Business Research</div>
 <div class="footer-social" style="display:flex;gap:16px;align-items:center;margin-top:10px;">
   <a href="https://www.linkedin.com/in/tanmay-gupta-0639012b0/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">LinkedIn ↗</a>
   <a href="https://github.com/Guptatanmay28" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">GitHub ↗</a>
   <a href="mailto:guptatanmay2806@gmail.com" style="color:inherit;text-decoration:none;">Email ↗</a>
-</div></footer><script>(function(){const r=document.documentElement,b=document.getElementById('themeToggle');const saved=localStorage.getItem('tanmay-theme')||'light';r.dataset.theme=saved;function sync(){const d=r.dataset.theme==='dark';b.innerHTML=(d?'☼':'☾')+' <span>'+(d?'Light':'Dark')+'</span>'}sync();b.onclick=()=>{r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tanmay-theme',r.dataset.theme);sync()}})();</script></body></html>
+</div></footer><script>(function(){const r=document.documentElement,b=document.getElementById('themeToggle');const saved=localStorage.getItem('tanmay-theme')||'light';r.dataset.theme=saved;function sync(){const d=r.dataset.theme==='dark';b.innerHTML=(d?'☼':'☾')+' <span>'+(d?'Light':'Dark')+'</span>'}sync();b.onclick=()=>{r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';localStorage.setItem('tanmay-theme',r.dataset.theme);sync()}})();</script><!-- Tanmay mobile menu fix -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const menuButton = document.querySelector(
+    '.menu-toggle, .mobile-menu-toggle, .hamburger, [aria-label="Menu"], [aria-label="menu"]'
+  );
+  const menu = document.querySelector(
+    '.mobile-menu, .mobile-nav, .nav-menu-mobile, #mobile-menu'
+  );
+
+  if (!menuButton || !menu) return;
+
+  menuButton.setAttribute('aria-expanded', 'false');
+
+  function closeMenu() {
+    menu.classList.remove('active', 'open', 'show');
+    menu.style.display = '';
+    menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const isOpen = menu.classList.contains('active') ||
+                   menu.classList.contains('open') ||
+                   menu.classList.contains('show');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menu.classList.add('active');
+      menuButton.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  menuButton.addEventListener('click', toggleMenu);
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+      closeMenu();
+    }
+  });
+});
+</script>
+
+</body></html>
