@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tata Motors — 5-Year Financial Performance & Valuation Analysis | Tanmay Gupta</title>
+<meta name="description" content="Tanmay Gupta's finance, data analytics and business research portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+ --bg:#06080c;--panel:#0c1017;--panel2:#111721;--text:#f6f8fb;--muted:#98a3b2;
+ --line:#202834;--accent:#8df58a;--accent2:#b8ffb5;--danger:#ff7e89;--blue:#8bb7ff;
+ --max:1180px;--shadow:0 18px 60px rgba(0,0,0,.24)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 0%,rgba(141,245,138,.07),transparent 28%),radial-gradient(circle at 0% 40%,rgba(139,183,255,.035),transparent 24%);z-index:-1}
+a{color:inherit;text-decoration:none}.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:30;background:rgba(6,8,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.04em}.logo span{color:var(--accent)}
+.links{display:flex;gap:22px;color:#aeb7c3;font-size:13px}.links a{transition:.2s}.links a:hover{color:var(--accent)}
+.hero{min-height:720px;display:flex;align-items:center;padding:95px 0 90px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.hero h1{font-family:"Space Grotesk";font-size:clamp(48px,7.4vw,92px);line-height:.96;letter-spacing:-.075em;max-width:950px;margin:18px 0}
+.hero h1 span{color:#9da7b4}.hero p{max-width:720px;color:var(--muted);font-size:19px;margin:24px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border:1px solid var(--line);border-radius:10px;font-weight:700;font-size:13px;transition:.22s}
+.btn:hover{transform:translateY(-2px);border-color:#3b4655}.btn.download{background:transparent;color:var(--accent);border-color:var(--accent)}.btn.download:hover{background:rgba(141,245,138,.08)}.btn.primary{background:var(--accent);color:#071008;border-color:var(--accent)}
+.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:70px;background:rgba(12,16,23,.65)}
+.metric-strip div{padding:18px 20px;border-right:1px solid var(--line)}.metric-strip div:last-child{border-right:0}
+.metric-strip strong{display:block;font-family:"Space Grotesk";font-size:25px}.metric-strip span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+section{padding:88px 0;border-bottom:1px solid var(--line)}.sectionhead{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:34px}
+.sectionhead h2{font-family:"Space Grotesk";font-size:40px;letter-spacing:-.05em;line-height:1.05;margin:8px 0}.sectionhead p{color:var(--muted);max-width:520px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.kpi .label{color:var(--muted);font-size:12px}.kpi .value{font-family:"Space Grotesk";font-size:28px;font-weight:700;margin:8px 0 2px}.kpi .sub{font-size:12px;color:var(--muted)}
+
+
+.dashboard-controls{display:flex;gap:24px;align-items:end;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px;padding:4px 0}
+.year-selector{display:flex;flex-direction:column;gap:7px}.year-selector>label,.control-group label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:700}
+.year-buttons{display:flex;gap:7px}
+.control-group{display:flex;flex-direction:column;gap:7px}.control-group select{height:42px;min-width:190px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:0 14px;font:inherit;font-size:12px;font-weight:700;outline:none}
+.control-group select:focus{border-color:#566274}
+.year-btn{height:42px;min-width:62px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:#8f9aaa;padding:0 14px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}
+.year-btn:hover{color:var(--text);border-color:#3c4756;transform:translateY(-1px)}
+.year-btn.active{background:var(--accent);border-color:var(--accent);color:#071008;box-shadow:0 5px 20px rgba(141,245,138,.12)}
+.interactive-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.metric-card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px;transition:.25s}
+.metric-card:hover{transform:translateY(-2px);border-color:#3a4655}.metric-card span,.metric-card small{display:block;color:var(--muted);font-size:11px}.metric-card strong{display:block;font-family:"Space Grotesk";font-size:25px;margin:6px 0 2px}.metric-card small{font-size:11px}
+.interactive-main{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}.interactive-chart,.year-profile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.interactive-chart{min-height:430px}.chart-title{display:flex;justify-content:space-between;align-items:start;gap:15px}.chart-title h3,.year-profile h3{font-family:"Space Grotesk";font-size:23px;margin:5px 0}.chart-period{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 9px}
+.year-profile{display:flex;flex-direction:column;justify-content:center}.year-profile h3{font-size:27px;line-height:1.1}.profile-number{font-family:"Space Grotesk";font-size:42px;color:var(--accent);letter-spacing:-.04em;margin:12px 0}.year-profile p{color:var(--muted);font-size:13px}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.mini-stats div{border:1px solid var(--line);border-radius:9px;padding:10px}.mini-stats span{display:block;color:var(--muted);font-size:10px}.mini-stats b{font-family:"Space Grotesk";font-size:14px}
+.dashboard-insight{margin-top:16px;padding:15px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(141,245,138,.035);color:#c4ccd6;font-size:13px}
+.year-dashboard{border:1px solid var(--line);border-radius:14px;overflow:auto;background:var(--panel);box-shadow:var(--shadow)}
+.year-head,.dash-row{display:grid;grid-template-columns:2.1fr repeat(5,1fr);min-width:980px}
+.year-head{background:var(--panel2);color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.year-head>div,.dash-row>div{padding:15px 16px;border-bottom:1px solid var(--line);text-align:right}
+.year-head>div:first-child,.dash-row>div:first-child{text-align:left}
+.dash-row:last-child>div{border-bottom:0}.metric-name{font-weight:700;color:#e8ecf2}
+.dash-row>div:not(.metric-name){font-family:"Space Grotesk";font-size:12px}
+.dash-row:hover{background:rgba(255,255,255,.025)}
+.dash-row .highlight{color:var(--accent);font-weight:700;background:rgba(141,245,138,.035)}
+.dash-row .negative{color:var(--danger);font-weight:700}
+.dashboard-note{margin:14px 0 18px;padding:15px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(141,245,138,.035);color:#c4ccd6;font-size:13px}
+.dash-dot{display:inline-block;width:7px;height:7px;background:var(--accent);border-radius:50%;margin-right:9px}
+.dashboard-charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+
+.charts{display:grid;grid-template-columns:1.3fr .7fr;gap:16px;margin-top:16px}.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;height:370px}.chartbox h3{margin:0 0 18px;font-size:15px}.chartwrap{height:290px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 13px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer}.tab.active,.tab:hover{color:#071008;background:var(--accent);border-color:var(--accent)}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}table{width:100%;border-collapse:collapse;min-width:1050px;table-layout:fixed}
+th,td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:right;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--panel);font-weight:600;width:32%}
+thead th{color:var(--muted);font-weight:600;background:var(--panel2)}thead th:not(:first-child),tbody td:not(:first-child){width:13.6%}
+tr:last-child td{border-bottom:0}
+
+.source-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}.source-card{display:flex;flex-direction:column;gap:7px;padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:13px}.source-card:hover{border-color:#3c4755;transform:translateY(-2px)}.source-card strong{font-family:"Space Grotesk";font-size:17px}.source-card span{color:var(--muted);font-size:12px}
+.data-basis-note{padding:14px 16px;border:1px solid #4a5a43;border-radius:11px;background:rgba(141,245,138,.045);color:#bdc7d1;font-size:12px;margin-bottom:16px}
+.project-basis{margin:15px 0;padding:12px 14px;border-left:2px solid var(--accent);background:rgba(141,245,138,.035);color:var(--muted);font-size:12px;border-radius:0 8px 8px 0}
+.chart-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.chart-tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 13px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer}.chart-tab.active,.chart-tab:hover{background:var(--accent);border-color:var(--accent);color:#071008}
+.large-chart-card,.small-chart-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}.large-chart-card{min-height:430px}.chartwrap.large{height:335px}.chart-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.small-chart-card{min-height:350px}.chartwrap.small{height:250px}.chart-note{color:var(--muted);font-size:11px;margin:10px 0 0}
+.graph-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.graph-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s}.graph-card:hover{transform:translateY(-3px);border-color:#34404e}
+.graph-card.wide{grid-column:1/-1}.graph-meta{display:flex;gap:14px;padding:20px 20px 12px}.graph-meta>span{color:var(--accent);font-family:"Space Grotesk";font-size:12px;font-weight:700}.graph-meta h3{font-family:"Space Grotesk";margin:0;font-size:18px}.graph-meta p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.graph-card img{display:block;width:100%;height:auto;background:#fff;border-top:1px solid var(--line)}
+.findings{display:grid;grid-template-columns:1fr 1fr;gap:16px}.finding{padding:25px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.finding h3{font-family:"Space Grotesk";margin:0 0 15px}.finding li{margin:9px 0;color:#c4ccd6}.finding.positive{border-top:2px solid var(--accent)}.finding.negative{border-top:2px solid var(--danger)}
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:16px}.thesis-card{padding:30px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.thesis-card .big{font-family:"Space Grotesk";font-size:42px;line-height:1;margin:12px 0}.thesis-card p{color:var(--muted)}
+
+.method-flow{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding:4px 2px 14px}
+.method-node{min-width:190px;flex:1;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;transition:.25s}
+.method-node:hover{transform:translateY(-3px);border-color:#3b4655}.method-node.active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(141,245,138,.12),0 15px 40px rgba(0,0,0,.18)}
+.method-icon{font-family:"Space Grotesk";font-size:12px;color:var(--accent);font-weight:700}.method-label{font-size:10px;color:var(--muted);letter-spacing:.12em;margin-top:10px;font-weight:700}.method-node h3{font-family:"Space Grotesk";font-size:20px;margin:5px 0}.method-node p{color:var(--muted);font-size:12px;margin:0}.method-arrow{display:flex;align-items:center;color:#4c5969;font-size:22px}
+.method-detail{margin-top:10px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;padding:28px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(141,245,138,.055),rgba(12,16,23,.9))}
+.method-detail h3{font-family:"Space Grotesk";font-size:26px;letter-spacing:-.03em;margin:8px 0}.method-detail p{color:var(--muted);max-width:650px}
+.method-detail-right{display:flex;flex-wrap:wrap;align-content:center;gap:8px}.method-detail-right span{padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:12px;color:#c6ced8}
+.method-result{display:grid;grid-template-columns:1fr 130px 130px 130px;align-items:center;gap:15px;margin-top:16px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.method-result h3{font-family:"Space Grotesk";margin:7px 0 0;font-size:20px}.pipeline-stat{border-left:1px solid var(--line);padding-left:18px}.pipeline-stat strong{display:block;font-family:"Space Grotesk";font-size:25px;color:var(--accent)}.pipeline-stat span{font-size:11px;color:var(--muted)}
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}.method-step{padding:28px;background:var(--panel);border-right:1px solid var(--line);position:relative}.method-step:last-child{border-right:0}.method-step .num{color:var(--accent);font-family:"Space Grotesk";font-weight:700}.method-step h3{font-family:"Space Grotesk";margin:10px 0 6px}.method-step p{color:var(--muted);font-size:13px}
+.peers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.peer{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}.peer h3{font-family:"Space Grotesk";margin:0 0 15px}.bar{margin:12px 0}.barline{height:7px;background:#1c232d;border-radius:99px;overflow:hidden}.barline i{display:block;height:100%;background:var(--accent);border-radius:99px}.barlabel{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:5px}
+#valuation .sectionhead{margin-bottom:18px}
+.valuation-date{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(141,245,138,.035)}
+.valuation-date span{font-size:10px;letter-spacing:.11em;color:var(--accent);font-weight:800}
+.valuation-date strong{font-family:"Space Grotesk";font-size:14px}
+.valuation-date small{color:var(--muted);font-size:11px}
+.valuation{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.valuation-card{min-height:180px;position:relative;display:flex;flex-direction:column;justify-content:center;padding:26px 24px;border:1px solid #2a3441;border-radius:14px;background:var(--panel);overflow:hidden;transition:.22s}
+.valuation-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(141,245,138,.055),transparent 42%);pointer-events:none}
+.valuation-card:hover{transform:translateY(-3px);border-color:#465362}
+.valuation-num{position:absolute;top:17px;right:18px;font-size:10px;color:var(--accent);letter-spacing:.08em;font-weight:800}
+.valuation-card strong{font-family:"Space Grotesk";font-size:25px;letter-spacing:-.025em;margin-bottom:9px}
+.valuation-card>span{color:var(--muted);font-size:12px;line-height:1.65;max-width:390px}
+.valuation-status{display:inline-flex;align-self:flex-start;margin-top:17px;padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:#9da7b5;font-size:10px}
+.valuation-conclusion{background:linear-gradient(135deg,rgba(141,245,138,.065),var(--panel))}
+.valuation-company-strip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;padding:15px 18px;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-size:12px}
+.valuation-company-strip>span{font-size:10px;color:var(--accent);letter-spacing:.1em;font-weight:800;margin-right:4px}
+.valuation-company-strip i{color:#687384;font-style:normal}
+.valuation{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.valuation .placeholder{min-height:160px;display:flex;flex-direction:column;justify-content:center;background:var(--panel);border:1px dashed #343e4b;border-radius:14px;padding:20px}.placeholder strong{font-family:"Space Grotesk";font-size:25px}.placeholder span{color:var(--muted);font-size:12px;margin-top:5px}
+.project-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.project-card{min-height:300px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;position:relative;overflow:hidden}.project-card.featured{background:linear-gradient(145deg,#10171a,#0c1017)}.project-card h3{font-family:"Space Grotesk";font-size:28px;letter-spacing:-.04em;margin:12px 0}.project-card p{color:var(--muted);max-width:600px}.project-num{color:var(--accent);font-family:"Space Grotesk";font-weight:700}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}.tag{border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:#bec6d0;font-size:11px}
+.skills{display:flex;flex-wrap:wrap;gap:9px}.skill{padding:10px 13px;border:1px solid var(--line);background:var(--panel);border-radius:9px;color:#c6cdd6;font-size:13px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:35px}.about h2{font-family:"Space Grotesk";font-size:42px;letter-spacing:-.05em;margin:8px 0}.about p{color:var(--muted)}
+footer{padding:45px 0;color:var(--muted);font-size:13px}.footerin{display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.method-detail{grid-template-columns:1fr}.method-result{grid-template-columns:1fr 1fr}.method-result>div:first-child{grid-column:1/-1}.method-flow{padding-bottom:12px}.interactive-kpis{grid-template-columns:1fr 1fr}.interactive-main{grid-template-columns:1fr}.dashboard-charts{grid-template-columns:1fr}.links{display:none}.grid{grid-template-columns:repeat(2,1fr)}.charts,.findings,.thesis,.project-grid,.about{grid-template-columns:1fr}.method{grid-template-columns:1fr}.method-step{border-right:0;border-bottom:1px solid var(--line)}.method-step:last-child{border-bottom:0}.peers{grid-template-columns:1fr}.valuation{grid-template-columns:1fr 1fr}.graph-grid{grid-template-columns:1fr}.graph-card.wide{grid-column:auto}}
+@media(max-width:600px){.chart-filter{width:100%}.chart-tab{flex:1}.method-result{grid-template-columns:1fr 1fr}.method-arrow{display:none}.method-node{min-width:170px}.dashboard-controls{align-items:stretch}.year-selector{width:100%}.year-buttons{width:100%}.year-btn{flex:1;min-width:0;padding:0 8px}.control-group{width:100%}.control-group select{width:100%}.interactive-kpis{grid-template-columns:1fr}.wrap{padding:0 16px}.hero{min-height:auto;padding:75px 0 55px}.hero h1{font-size:49px}.metric-strip{grid-template-columns:1fr 1fr;margin-top:45px}.metric-strip div:nth-child(2){border-right:0}.metric-strip div{border-bottom:1px solid var(--line)}.metric-strip div:nth-child(3),.metric-strip div:nth-child(4){border-bottom:0}.grid{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead h2{font-size:32px}.valuation{grid-template-columns:1fr}.chartbox{height:330px}.chartwrap{height:250px}.footerin{display:block}}
+
+/* ---------- IIM / academic presentation layer ---------- */
+:root{
+  --bg:#070a0f;
+  --panel:#0d121a;
+  --panel2:#111824;
+  --text:#f2f5f8;
+  --muted:#9aa6b5;
+  --line:#26303d;
+  --accent:#7ee787;
+  --accent2:#b8f5bc;
+  --blue:#8bb7ff;
+  --danger:#ff7e89;
+  --max:1240px;
+  --shadow:0 20px 70px rgba(0,0,0,.30)
+}
+body{
+  background:
+    radial-gradient(circle at 88% 5%,rgba(126,231,135,.045),transparent 24%),
+    linear-gradient(180deg,#070a0f 0%,#080b10 48%,#070a0f 100%);
+  color:var(--text);
+}
+body:before{display:none}
+.wrap{max-width:1240px;padding:0 28px}
+nav{
+  background:rgba(7,10,15,.90);
+  border-bottom:1px solid #202833;
+}
+.navin{height:68px}
+.logo{font-size:15px;letter-spacing:-.045em}
+.links{gap:25px;font-size:12px;font-weight:600}
+.links a{color:#9da8b6}
+.links a:hover{color:var(--text)}
+.hero{
+  min-height:690px;
+  padding:110px 0 85px;
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{position:relative}
+.hero h1{
+  max-width:980px;
+  font-size:clamp(50px,6.7vw,84px);
+  line-height:.99;
+  letter-spacing:-.065em;
+  margin:17px 0 22px;
+}
+.hero h1 span{color:#aab5c2}
+.hero p{max-width:700px;font-size:17px;line-height:1.75;color:#a3aebb}
+.actions{margin-top:28px}
+.btn{border-radius:8px;padding:11px 15px;font-size:12px}
+.btn.primary{box-shadow:0 8px 24px rgba(126,231,135,.10)}
+.metric-strip{
+  margin-top:65px;
+  border-radius:10px;
+  background:rgba(13,18,26,.82);
+  box-shadow:var(--shadow);
+}
+.metric-strip div{padding:17px 19px}
+.metric-strip strong{font-size:22px}
+.metric-strip span{font-size:11px;color:#8995a4}
+section{padding:88px 0}
+.sectionhead{margin-bottom:27px}
+.sectionhead h2{
+  font-size:clamp(30px,4vw,48px);
+  letter-spacing:-.055em;
+  margin:7px 0 0;
+}
+.sectionhead>p{max-width:590px;font-size:13px;line-height:1.75}
+.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--accent)}
+.project-grid{gap:13px}
+.project-card,.research-question-card{
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#0d121a,#0b1017);
+  box-shadow:0 12px 45px rgba(0,0,0,.13);
+}
+.project-card{padding:25px}
+.project-card:hover{border-color:#3b4654;transform:translateY(-2px)}
+.project-card.featured{min-height:270px;border-color:#35413a}
+.project-card h3,.research-question-card h3{font-size:22px;line-height:1.25;letter-spacing:-.035em}
+.project-card p,.research-question-card p{font-size:12px;line-height:1.75;color:#9ca8b7}
+.project-num{font-size:10px;letter-spacing:.14em;color:var(--accent);font-weight:800}
+.project-basis{
+  border-left:2px solid var(--accent);
+  background:rgba(126,231,135,.035);
+  padding:11px 13px;
+  font-size:11px;
+  color:#a6b1bf;
+  margin-top:16px;
+}
+.tags{gap:6px}
+.tag{font-size:10px;padding:5px 8px;border-radius:999px;background:#101721;border-color:#27313d;color:#aeb8c5}
+
+/* Research question */
+.research-question-card{
+  grid-column:span 2;
+  padding:25px;
+  background:linear-gradient(110deg,rgba(126,231,135,.045),#0d121a 48%);
+}
+.research-question-card h3{max-width:800px;font-size:25px;margin:9px 0}
+.rq-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  margin-top:22px;
+  padding-top:17px;
+  gap:15px;
+}
+.rq-grid div{display:flex;flex-direction:column;gap:3px}
+.rq-grid b{font-size:11px;color:#d7dde5}
+.rq-grid span{font-size:10px;color:#778493}
+
+/* Dashboard */
+.dashboard-controls{
+  padding:14px 15px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#0b1017;
+}
+.year-selector>label,.control-group label{font-size:10px;letter-spacing:.13em;font-weight:800}
+.year-buttons{gap:6px}
+.year-btn{
+  min-width:64px;
+  height:39px;
+  border-radius:8px;
+  background:#0e141d;
+  border-color:#293340;
+  font-size:11px;
+}
+.year-btn.active{box-shadow:0 0 0 1px rgba(126,231,135,.08),0 6px 18px rgba(126,231,135,.08)}
+.control-group select{height:39px;border-radius:8px;font-size:11px;background:#0e141d}
+.interactive-kpis{gap:10px;margin:14px 0}
+.metric-card{
+  border-radius:10px;
+  border-color:var(--line);
+  background:#0d121a;
+  padding:17px;
+}
+.metric-card span{font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.metric-card strong{font-size:24px}
+.interactive-main{gap:12px}
+.interactive-chart,.year-profile{
+  border-radius:11px;
+  border-color:var(--line);
+  background:#0d121a;
+}
+.interactive-chart{min-height:430px}
+.year-profile{padding:24px}
+.profile-number{font-size:31px}
+.dashboard-insight{
+  border-radius:10px;
+  border-color:#314238;
+  background:rgba(126,231,135,.035);
+  padding:14px 16px;
+  font-size:12px;
+}
+.insight-label{font-size:9px;letter-spacing:.13em;color:var(--accent);font-weight:800;margin-right:8px}
+
+/* Tables / charts */
+.tablewrap{border-radius:10px;border-color:var(--line);background:#0b1017}
+table{font-size:11px}
+th{font-size:10px;letter-spacing:.05em;color:#8e9aaa}
+td{padding:12px 15px}
+.large-chart-card,.small-chart-card,.chartbox,.card{
+  border-radius:11px;
+  border-color:var(--line);
+  background:#0d121a;
+  box-shadow:none;
+}
+.large-chart-card{min-height:410px}
+.chart-grid-2{gap:12px}
+.chart-title h3,.chartbox h3,.card h3{font-size:17px;letter-spacing:-.02em}
+.chart-filter{gap:6px}
+.chart-tab{border-radius:8px;font-size:10px;padding:8px 11px}
+.data-basis-note{
+  border-radius:9px;
+  background:#0b1017;
+  border-color:#2b3744;
+  font-size:11px;
+}
+
+/* Valuation */
+.valuation-card{
+  min-height:175px;
+  border-radius:11px;
+  background:#0d121a;
+  border-color:var(--line);
+}
+.valuation-card strong{font-size:22px}
+.valuation-status{font-size:9px}
+.valuation-date,.valuation-company-strip{
+  border-radius:9px;
+  background:#0b1017;
+}
+
+/* Methodology */
+.method-node{border-radius:11px;background:#0d121a}
+.method-node h3{font-size:18px}
+.method-detail,.method-result{border-radius:11px;background:#0d121a}
+.method-detail h3{font-size:23px}
+.method-result h3{font-size:17px}
+.source-card{border-radius:10px;background:#0d121a}
+
+/* Footer / polish */
+footer{border-top:1px solid var(--line);background:#080b10}
+.reveal{transform:translateY(18px)}
+@media(max-width:900px){
+  .research-question-card{grid-column:span 2}
+  .rq-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  section{padding:68px 0}
+  .hero{padding:82px 0 65px}
+  .hero h1{font-size:48px}
+  .metric-strip{grid-template-columns:1fr 1fr}
+  .metric-strip div:nth-child(2){border-right:0}
+  .research-question-card{grid-column:span 1}
+  .rq-grid{grid-template-columns:1fr 1fr}
+}
+
+
+.case-status{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:6px 9px;border:1px solid #2a353f;border-radius:999px;color:#84909e;font-size:9px;font-weight:800;letter-spacing:.10em}
+.case-status span{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(126,231,135,.35)}
+
+
+/* ---------- Dark / Light presentation modes ---------- */
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  height:34px;
+  padding:0 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--muted);
+  cursor:pointer;
+  font:inherit;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.04em;
+  transition:.2s;
+}
+.theme-toggle:hover{border-color:#556171;color:var(--text)}
+.theme-icon{font-size:15px;line-height:1}
+:root{
+  --bg:#070a0f;
+  --panel:#0d121a;
+  --panel2:#111824;
+  --text:#f2f5f8;
+  --muted:#9aa6b5;
+  --line:#26303d;
+  --accent:#7ee787;
+  --blue:#8bb7ff;
+  --danger:#ff7e89;
+}
+html[data-theme="light"]{
+  --bg:#f5f7fa;
+  --panel:#ffffff;
+  --panel2:#eef2f6;
+  --text:#18202b;
+  --muted:#667384;
+  --line:#d7dee7;
+  --accent:#187a2b;
+  --blue:#2f65b0;
+  --danger:#c43d4a;
+}
+html[data-theme="light"] body{
+  background:
+    radial-gradient(circle at 88% 5%,rgba(24,122,43,.055),transparent 25%),
+    linear-gradient(180deg,#f7f9fb 0%,#f3f6f9 55%,#f7f9fb 100%);
+}
+html[data-theme="light"] nav{
+  background:rgba(247,249,251,.92);
+  border-bottom-color:#dfe5ec;
+}
+html[data-theme="light"] .links a{color:#5f6b79}
+html[data-theme="light"] .links a:hover{color:#18202b}
+html[data-theme="light"] .hero h1 span{color:#536172}
+html[data-theme="light"] .metric-strip,
+html[data-theme="light"] .dashboard-controls,
+html[data-theme="light"] .metric-card,
+html[data-theme="light"] .interactive-chart,
+html[data-theme="light"] .year-profile,
+html[data-theme="light"] .large-chart-card,
+html[data-theme="light"] .small-chart-card,
+html[data-theme="light"] .project-card,
+html[data-theme="light"] .research-question-card,
+html[data-theme="light"] .valuation-card,
+html[data-theme="light"] .method-node,
+html[data-theme="light"] .method-detail,
+html[data-theme="light"] .method-result,
+html[data-theme="light"] .source-card,
+html[data-theme="light"] .tablewrap,
+html[data-theme="light"] .card,
+html[data-theme="light"] .chartbox{
+  background:var(--panel);
+  box-shadow:0 12px 40px rgba(28,42,58,.06);
+}
+html[data-theme="light"] .year-btn,
+html[data-theme="light"] .control-group select,
+html[data-theme="light"] .chart-tab,
+html[data-theme="light"] .tag{
+  background:#f6f8fa;
+  color:#667384;
+}
+html[data-theme="light"] .year-btn.active,
+html[data-theme="light"] .chart-tab.active{
+  background:var(--accent);
+  color:#fff;
+}
+html[data-theme="light"] .data-basis-note,
+html[data-theme="light"] .project-basis,
+html[data-theme="light"] .valuation-date,
+html[data-theme="light"] .valuation-company-strip{
+  background:#f4f8f4;
+  border-color:#cfe1d2;
+}
+html[data-theme="light"] .dashboard-insight{
+  background:#f2f8f3;
+  border-color:#c9dfce;
+}
+html[data-theme="light"] footer{
+  background:#eef2f6;
+  border-top-color:#d7dee7;
+}
+html[data-theme="light"] .case-status{
+  color:#687585;
+  background:rgba(255,255,255,.65);
+}
+html[data-theme="light"] .btn.primary{color:#fff}
+@media(max-width:800px){
+  .theme-toggle{margin-left:auto}
+  .navin{gap:10px}
+}
+
+
+/* ---------- Cash generation presentation ---------- */
+.cash-flow-flow{border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden}
+.cash-flow-head{display:grid;grid-template-columns:repeat(5,1fr);padding:14px 15px;border-bottom:1px solid var(--line);background:rgba(126,231,135,.025)}
+.cash-flow-head span{text-align:center;font:700 10px "Space Grotesk";letter-spacing:.12em;color:var(--muted)}
+.cash-flow-years{display:grid;grid-template-columns:repeat(5,1fr)}
+.cash-year{position:relative;padding:24px 17px 22px;text-align:center;border-right:1px solid var(--line)}
+.cash-year:last-child{border-right:0}
+.cash-year.peak{background:rgba(126,231,135,.035)}
+.cash-label{font-size:8px;letter-spacing:.09em;color:#7f8b9a;font-weight:800;margin-bottom:7px}
+.cash-year strong{font:600 16px "Space Grotesk";letter-spacing:-.02em}
+.cash-arrow{color:#586575;font-size:15px;margin:10px 0}
+.cash-fcf{font:600 21px "Space Grotesk";letter-spacing:-.035em;margin-top:2px}
+.cash-fcf.positive{color:var(--accent)}
+.cash-fcf.negative{color:var(--danger)}
+.cash-year>span{display:block;margin-top:5px;font-size:8px;letter-spacing:.11em;color:#778493;font-weight:800}
+.cash-takeaway{display:grid;grid-template-columns:1.1fr .9fr;gap:25px;margin-top:13px;padding:20px 22px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(105deg,rgba(126,231,135,.045),var(--panel))}
+.cash-takeaway h3{font:600 20px/1.25 "Space Grotesk";letter-spacing:-.03em;margin:7px 0 0}
+.cash-takeaway p{color:var(--muted);font-size:12px;line-height:1.75;margin:0;align-self:center}
+.cash-formula{display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding:11px 14px;border:1px dashed var(--line);border-radius:9px;color:var(--muted);font-size:11px}
+.cash-formula strong{color:var(--text);font-family:"Space Grotesk"}
+@media(max-width:900px){
+  .cash-flow-flow{overflow-x:auto}
+  .cash-flow-head,.cash-flow-years{min-width:850px}
+  .cash-takeaway{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .cash-flow-head,.cash-flow-years{min-width:760px}
+  .cash-formula{flex-direction:column;align-items:flex-start;gap:5px}
+}
+
+
+html[data-theme="light"] .cash-flow-flow,
+html[data-theme="light"] .cash-takeaway{background:var(--panel)}
+html[data-theme="light"] .cash-flow-head{background:#f4f8f4}
+html[data-theme="light"] .cash-formula{background:#f8fafb}
+
+
+.cash-year-tab{border:0;background:transparent;color:var(--muted);font:700 10px "Space Grotesk";letter-spacing:.12em;cursor:pointer;padding:7px 8px;border-radius:7px;transition:.18s}
+.cash-year-tab:hover{color:var(--text);background:rgba(126,231,135,.04)}
+.cash-year-tab.active{color:#071008;background:var(--accent)}
+.cash-year{cursor:pointer;transition:.22s}
+.cash-year:hover{background:rgba(126,231,135,.025)}
+.cash-year.active{background:rgba(126,231,135,.055);box-shadow:inset 0 0 0 1px rgba(126,231,135,.16)}
+.cash-detail-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;margin-top:10px;padding:20px 22px;border:1px solid #34443a;border-radius:12px;background:linear-gradient(105deg,rgba(126,231,135,.055),var(--panel));transition:.2s}
+.cash-detail-panel h3{font:600 21px/1.2 "Space Grotesk";letter-spacing:-.03em;margin:7px 0}
+.cash-detail-panel p{color:var(--muted);font-size:12px;line-height:1.7;margin:0;max-width:620px}
+.cash-detail-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-self:center}
+.cash-detail-metrics div{padding:13px;border:1px solid var(--line);border-radius:9px;background:rgba(0,0,0,.08)}
+.cash-detail-metrics span{display:block;font-size:8px;color:var(--muted);letter-spacing:.11em;font-weight:800;margin-bottom:5px}
+.cash-detail-metrics strong{font:600 16px "Space Grotesk"}
+html[data-theme="light"] .cash-detail-panel{background:#f4f8f4;border-color:#cfe1d2}
+html[data-theme="light"] .cash-detail-metrics div{background:#fff}
+@media(max-width:900px){.cash-detail-panel{grid-template-columns:1fr}}
+@media(max-width:600px){.cash-detail-metrics{grid-template-columns:1fr}.cash-flow-head{display:flex;justify-content:space-between;min-width:0}.cash-year-tab{flex:1}.cash-flow-years{min-width:760px}}
+
+
+/* FINAL POLISH — Warm White / Deep Navy / Muted Teal / Gold */
+:root{--bg:#0b1118;--panel:#121b27;--panel2:#172231;--text:#f5f7fa;--muted:#a8b4c3;--line:#2a3849;--accent:#4aaea3;--accent2:#8bd1c9;--danger:#e17b7b;--gold:#c9a85a;--blue:#8aa7c7;--max:1180px}
+html[data-theme="light"]{--bg:#f7f5ef;--panel:#fffdf9;--panel2:#f0eee7;--text:#152235;--muted:#66758a;--line:#d8dee5;--accent:#2f8f87;--accent2:#69bdb5;--danger:#c95e62;--gold:#a98538;--blue:#54708e}
+body{background:var(--bg);color:var(--text)} body:before{background:radial-gradient(circle at 82% 0%,rgba(74,174,163,.08),transparent 28%),radial-gradient(circle at 0% 45%,rgba(201,168,90,.035),transparent 22%)}
+nav{background:color-mix(in srgb,var(--bg) 88%,transparent);border-bottom:1px solid var(--line)}
+.links{color:var(--muted)}.links a:hover{color:var(--accent)}
+.hero h1 span{color:#7e8da0}.eyebrow{color:var(--accent)}
+.btn.primary,.year-btn.active,.chart-tab.active,.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{filter:brightness(1.05)}
+.card,.metric-card,.interactive-chart,.year-profile,.chartbox,.project-card,.method-node,.method-detail,.method-result,.valuation-card,.source-card,.tablewrap,.year-dashboard,.cash-flow-flow,.cash-takeaway{background:var(--panel);border-color:var(--line);color:var(--text)}
+.metric-strip{background:var(--panel)}
+.metric-strip div,.dash-row>div,th,td{border-color:var(--line)}
+.metric-card strong,.valuation-card strong,.profile-number{color:var(--text)}
+.dashboard-insight,.dashboard-note,.data-basis-note,.project-basis{background:color-mix(in srgb,var(--accent) 8%,var(--panel));border-color:color-mix(in srgb,var(--accent) 35%,var(--line));color:var(--muted)}
+.chart-period,.valuation-status,.tag,.chart-tab,.tab,.year-btn,.control-group select{border-color:var(--line);background:var(--panel2);color:var(--muted)}
+.year-head,thead th{background:var(--panel2);color:var(--muted)}
+th:first-child,td:first-child{background:var(--panel)}
+.dash-row:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.dash-row .highlight{color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.barline{background:#263243}.barline i{background:var(--accent)}
+.valuation-date,.valuation-company-strip{background:color-mix(in srgb,var(--accent) 6%,var(--panel));border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+.valuation-card:before{background:radial-gradient(circle at 0 0,color-mix(in srgb,var(--accent) 8%,transparent),transparent 42%)}
+.valuation-card:hover{border-color:var(--accent)}
+.valuation-conclusion{background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,var(--panel)),var(--panel))}
+.cash-year.active,.cash-year.peak{background:color-mix(in srgb,var(--accent) 8%,var(--panel));box-shadow:inset 0 2px 0 var(--accent)}
+.cash-year-tab.active{color:#fff;background:var(--accent)}
+.cash-fcf.positive{color:#5dbb7b}.cash-fcf.negative{color:var(--danger)}
+.cash-detail-panel{background:color-mix(in srgb,var(--accent) 7%,var(--panel));border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.cash-detail-metrics div{background:var(--panel2);border-color:var(--line)}
+.method-node.active{border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 20%,transparent)}
+.method-node:hover{border-color:var(--accent)}
+.method-icon{color:var(--accent)}
+html[data-theme="light"] body:before{opacity:.7}
+html[data-theme="light"] .hero h1 span{color:#66758a}
+html[data-theme="light"] .links a{color:#536274} html[data-theme="light"] .links a:hover{color:#173a3a}
+html[data-theme="light"] .chartbox canvas,html[data-theme="light"] .interactive-chart canvas{filter:none}
+html[data-theme="light"] .cash-year strong,html[data-theme="light"] .valuation-card strong,html[data-theme="light"] .metric-card strong{color:#152235}
+html[data-theme="light"] .barline{background:#dce3e9}
+html[data-theme="light"] .year-head,html[data-theme="light"] thead th{background:#f0eee7}
+html[data-theme="light"] th:first-child,html[data-theme="light"] td:first-child{background:#fffdf9}
+html[data-theme="light"] .cash-year-tab{color:#66758a}
+html[data-theme="light"] .cash-year-tab.active{color:#fff}
+/* clickable controls */
+.cash-year,.cash-year-tab,.method-node,.valuation-card,.peer,.chart-tab,.year-btn,.tab{cursor:pointer}
+.cash-year:focus-visible,.method-node:focus-visible,.valuation-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+
+/* ===== FINAL VALUATION UPGRADE ===== */
+.upgraded-valuation{display:grid;gap:16px}
+.valuation-summary-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.valuation-method-card,.valuation-table-card,.valuation-insight,.valuation-formula{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+.valuation-method-card{padding:18px 20px}
+.valuation-mini-label{display:block;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.valuation-method-card strong{display:block;color:var(--ink);font-family:"Space Grotesk";font-size:19px;margin:7px 0 3px}
+.valuation-method-card small{display:block;color:var(--muted);font-size:11px;line-height:1.5}
+.valuation-table-card{overflow:hidden}
+.valuation-table-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:20px;border-bottom:1px solid var(--line)}
+.valuation-table-head h3{margin:5px 0 0;color:var(--ink);font-family:"Space Grotesk";font-size:22px}
+.valuation-source-note{color:var(--muted);font-size:10px}
+.valuation-table-scroll{overflow-x:auto}
+.valuation-table{width:100%;border-collapse:collapse;min-width:760px}
+.valuation-table th,.valuation-table td{padding:14px 16px;text-align:right;border-bottom:1px solid var(--line);font-size:12px}
+.valuation-table th:first-child,.valuation-table td:first-child{text-align:left}
+.valuation-table th{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em;background:var(--soft)}
+.valuation-table td{color:var(--ink);font-weight:600}
+.valuation-table td:first-child{color:var(--muted);font-weight:600}
+.valuation-table tr:last-child td{border-bottom:0}
+.valuation-table .multiple-row td:not(:first-child){color:var(--accent);font-family:"Space Grotesk";font-size:14px}
+.valuation-footnote{margin:0;padding:12px 16px;color:var(--muted);font-size:10px;line-height:1.6;border-top:1px solid var(--line)}
+.valuation-insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.valuation-insight{display:flex;gap:13px;padding:18px}
+.valuation-insight .valuation-num{flex:0 0 auto;width:30px;height:30px;border-radius:8px;background:rgba(22,140,130,.09);color:var(--accent);display:grid;place-items:center;font:700 11px "Space Grotesk"}
+.valuation-insight strong{color:var(--ink);font-size:13px}
+.valuation-insight p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.65}
+.valuation-formula{padding:15px 18px}
+.valuation-formula>span{display:block;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.13em;margin-bottom:8px}
+.valuation-formula>div{color:var(--muted);font-size:11px;line-height:1.8}
+.valuation-formula b{color:var(--ink)}
+.valuation-formula i{color:var(--gold);font-style:normal;padding:0 7px}
+html[data-theme="dark"] .valuation-table th{background:#182129}
+html[data-theme="dark"] .valuation-method-card,
+html[data-theme="dark"] .valuation-table-card,
+html[data-theme="dark"] .valuation-insight,
+html[data-theme="dark"] .valuation-formula{background:#12191F;border-color:#2A343C}
+html[data-theme="dark"] .valuation-table td{color:#F1F4F3}
+html[data-theme="dark"] .valuation-table td:first-child{color:#AEB9C7}
+@media(max-width:800px){
+  .valuation-summary-row,.valuation-insight-grid{grid-template-columns:1fr}
+  .valuation-table-head{align-items:flex-start;flex-direction:column}
+}
+
+
+/* ===== VALUATION LAYOUT FIX — FULL WIDTH, POLISHED ===== */
+.valuation.upgraded-valuation{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) !important;
+  gap:18px !important;
+  width:100%;
+  min-width:0;
+}
+.valuation.upgraded-valuation > *{min-width:0}
+.valuation-summary-row{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+.valuation-method-card{
+  min-height:128px;
+  padding:20px 22px !important;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.valuation-method-card strong{
+  font-size:20px !important;
+  line-height:1.2;
+}
+.valuation-method-card small{
+  max-width:260px;
+}
+.valuation-table-card{
+  width:100%;
+  overflow:hidden !important;
+}
+.valuation-table-head{
+  padding:20px 22px !important;
+}
+.valuation-table-scroll{
+  overflow-x:auto;
+  width:100%;
+}
+.valuation-table{
+  width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed;
+}
+.valuation-table th,.valuation-table td{
+  padding:14px 18px !important;
+  white-space:normal;
+}
+.valuation-table th:first-child,.valuation-table td:first-child{
+  width:30%;
+}
+.valuation-table th:not(:first-child),.valuation-table td:not(:first-child){
+  width:23.33%;
+}
+.valuation-insight-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+.valuation-insight{
+  min-height:150px;
+}
+.valuation-formula{
+  width:100%;
+}
+@media(max-width:900px){
+  .valuation-summary-row{grid-template-columns:1fr !important}
+  .valuation-insight-grid{grid-template-columns:1fr !important}
+  .valuation-table{min-width:700px !important;table-layout:auto}
+}
+
+</style>
+</head>
+<body>
+
+<nav><div class="wrap navin">
+<a class="logo" href="index.html">TANMAY<span>.</span></a>
+<div class="links"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="dashboards.html">Dashboards</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap reveal">
+  <div class="eyebrow">Finance × Data × Business</div>
+  <h1>Turning financial data into <span>investment insight.</span></h1>
+  <p>I’m Tanmay Gupta, a Computer Science student building finance and data projects that connect quantitative analysis with business decisions.</p>
+  <div class="case-status"><span></span> FEATURED CASE STUDY · TATA MOTORS · FY22–FY26</div><div class="actions"><a class="btn primary" href="#work">Explore work ↓</a><a class="btn" href="#project">View Tata Motors analysis</a><a class="btn download" href="Tata_Motors_Case_Study_FY26_Corrected.pdf" download>Download Case Study PDF ↓</a></div>
+  <div class="metric-strip">
+    <div><strong>5</strong><span>Years analyzed</span></div>
+    <div><strong>10+</strong><span>Financial metrics</span></div>
+    <div><strong>10</strong><span>Core visualizations</span></div>
+    <div><strong>3</strong><span>Project categories</span></div>
+  </div>
+</div></header>
+
+<section id="work"><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">Selected work</div><h2>Projects built around real decisions.</h2></div><p>My portfolio focuses on understanding businesses through data, financial statements, analytical models and clear communication.</p></div>
+  <div class="project-grid">
+    <article class="project-card featured" id="project"><div class="project-num">01 — FEATURED CASE STUDY</div><h3>Tata Motors — 5-Year Financial Performance & Valuation Analysis</h3><p>A FY2022–FY2025 historical analysis with FY26 consolidated results, covering financial performance, profitability, leverage, cash flow, operating performance, peer comparison and valuation.</p><div class="project-basis"><strong>Important:</strong> FY22–FY26 use the Tata Motors Passenger Vehicles consolidated reporting basis shown in the FY26 results. FY26 is the continuing-operations group result. </div><div class="tags"><span class="tag">Financial Analysis</span><span class="tag">Ratio Analysis</span><span class="tag">Valuation</span><span class="tag">Research</span><span class="tag">Data Visualization</span></div><div class="actions" style="margin-top:18px"><a class="btn download" href="Tata_Motors_Case_Study_FY26_Corrected.pdf" download>Download Full Case Study PDF ↓</a></div></article>
+    <article class="project-card"><div class="project-num">02 — DATA PROJECT</div><h3>Fraud Detection Analytics</h3><p>Upcoming machine-learning project focused on transaction patterns, feature analysis, anomaly detection and model evaluation.</p><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span></div></article>
+    
+    
+  </div>
+</div></section>
+
+
+
+<section id="dashboard"><div class="wrap reveal">
+  <div class="sectionhead">
+    <div><div class="eyebrow">Interactive dashboard</div><h2>Tata Motors — Explore the 5-Year Story</h2></div>
+    <p>Pick a financial year or metric and the dashboard updates instantly. Designed as an analyst interface rather than a spreadsheet-style report.</p>
+  </div>
+
+  <div class="dashboard-controls">
+    <div class="year-selector">
+      <label>Financial year</label>
+      <div class="year-buttons">
+        <button class="year-btn" data-year="0">FY22</button>
+        <button class="year-btn" data-year="1">FY23</button>
+        <button class="year-btn active" data-year="2">FY24</button>
+        <button class="year-btn" data-year="3">FY25</button>
+        <button class="year-btn" data-year="4">FY26</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="metricSelect">Explore metric</label>
+      <select id="metricSelect">
+        <option value="revenue">Revenue</option><option value="profit">Net Profit / Loss</option><option value="ebitda">EBITDA</option><option value="margin">EBITDA Margin</option><option value="debt">Total Debt</option><option value="fcf">Free Cash Flow</option><option value="vehicles">Vehicle Sales</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="interactive-kpis" id="interactiveKpis">
+    <div class="metric-card"><span>Revenue</span><strong id="kRevenue">₹437,929 Cr</strong><small id="kRevenueSub">+26.58% YoY</small></div>
+    <div class="metric-card"><span>EBITDA Margin</span><strong id="kMargin">14.30%</strong><small id="kMarginSub">Strongest period</small></div>
+    <div class="metric-card"><span>Net Debt</span><strong id="kDebt">₹55,485 Cr</strong><small id="kDebtSub">Debt / Equity 1.03×</small></div>
+    <div class="metric-card"><span>Free Cash Flow</span><strong id="kFcf">₹36,732 Cr</strong><small id="kFcfSub">Positive cash generation</small></div>
+  </div>
+
+  <div class="interactive-main">
+    <div class="interactive-chart">
+      <div class="chart-title">
+        <div><span class="eyebrow">Selected metric</span><h3 id="metricTitle">Revenue</h3></div>
+        <span class="chart-period">FY22 → FY26</span>
+      </div>
+      <div class="chartwrap"><canvas id="interactiveChart"></canvas></div>
+    </div>
+
+    <div class="year-profile">
+      <span class="eyebrow" id="profileEyebrow">FY24 snapshot</span>
+      <h3 id="profileTitle">Peak financial performance</h3>
+      <div class="profile-number" id="profileNumber">₹437,929 Cr</div>
+      <p id="profileText">Revenue reached its highest level in the five-year dataset while EBITDA, ROE, ROCE and operating cash flow were also exceptionally strong.</p>
+      <div class="mini-stats">
+        <div><span>EPS</span><b id="pEps">₹81.95</b></div>
+        <div><span>ROE</span><b id="pRoe">34.17%</b></div>
+        <div><span>Vehicles</span><b id="pVehicles">1.38M</b></div>
+        <div><span>Calculated FCF</span><b id="pFcf">₹36,732 Cr</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-insight" id="dashboardInsight">
+    <span class="dash-dot"></span><span class="insight-label">ANALYST TAKEAWAY</span><strong> FY24 is the strongest overall year in this five-year dataset, combining peak revenue, EBITDA, operating cash flow and return ratios with positive free cash flow.
+  </div>
+</div></section>
+
+
+
+<section id="analysis"><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">01 — Financial performance</div><h2>Core financials</h2></div><p>FY22–FY26 consolidated historical data, with FY26 reflecting continuing operations after the 2025 restructuring.</p></div>
+  <div class="tablewrap"><table><thead><tr><th>Particulars</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead><tbody id="financialTable"></tbody></table></div>
+</div></section>
+
+
+<section id="charts"><div class="wrap reveal">
+  <div class="sectionhead">
+    <div><div class="eyebrow">02 — Visual analysis</div><h2>Five-year performance</h2></div>
+    <p>Interactive charts use the corrected financial series. FY22–FY25 use the historical consolidated series; FY26 uses the continuing-operations consolidated results shown in the FY26 report.</p>
+  </div>
+  <div class="data-basis-note"><strong>Data basis:</strong> FY22–FY25 use Tata Motors' historical consolidated reporting. FY26 uses the Tata Motors Passenger Vehicles consolidated continuing-operations reporting basis. The FY26 result includes the impact of JLR headwinds and the 2025 restructuring.</div>
+
+  <div class="chart-filter">
+    <button class="chart-tab active" data-chart="revenue">Revenue</button>
+    <button class="chart-tab" data-chart="profitability">Profitability</button>
+    <button class="chart-tab" data-chart="cash">Cash Flow</button>
+    <button class="chart-tab" data-chart="leverage">Leverage</button>
+    <button class="chart-tab" data-chart="operations">Operations</button>
+  </div>
+  <div class="large-chart-card">
+    <div class="chart-title"><div><span class="eyebrow" id="chartEyebrow">Revenue</span><h3 id="chartHeading">Revenue trend — ₹ crore (FY26 consolidated) (FY26 consolidated)</h3></div><span class="chart-period">FY22 → FY26</span></div>
+    <div class="chartwrap large"><canvas id="mainAnalysisChart"></canvas></div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="small-chart-card"><h3>Revenue Growth</h3><div class="chartwrap small"><canvas id="growthChart"></canvas></div><p class="chart-note">FY26 is shown separately because the reporting perimeter changed after October 2025; no misleading FY25→FY26 growth rate is shown. </p></div>
+    <div class="small-chart-card"><h3>Vehicle Sales</h3><div class="chartwrap small"><canvas id="vehicleChart"></canvas></div><p class="chart-note">FY26 consolidated vehicle wholesales: <strong>949,501 units</strong>. </p></div>
+  </div>
+</div></section>
+
+
+<section><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">03 — Cash generation</div><h2>Free cash flow</h2></div><p>Calculated FCF = Operating Cash Flow − CAPEX. The metric is kept separate from Tata Motors’ reported FCF definition.</p></div>
+  <div class="charts"><div class="chartbox"><h3>Operating Cash Flow vs CAPEX</h3><div class="chartwrap"><canvas id="cashChart"></canvas></div></div><div class="card"><h3>What changed?</h3><p style="color:var(--muted)">Calculated FCF was positive through FY25. For FY26, Tata Motors officially reported consolidated free cash flow of ₹12,400 crore; it should not be mixed with the historical calculated FCF series.</p><div class="tags"><span class="tag">FY24 Calculated FCF ₹36,732 Cr</span><span class="tag">FY26 Reported FCF ₹(26,823) Cr</span></div></div></div>
+</div></section>
+
+<section><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">04 — Investment thesis</div><h2>The good vs the concern.</h2></div><p>The historical period shows substantial deleveraging and improved profitability; FY26 represents a structural reporting break after the demerger.</p></div>
+  <div class="thesis">
+    <div class="thesis-card"><div class="eyebrow">Strength</div><div class="big">3.36× → 0.59×</div><p>Debt / Equity fell dramatically through FY25, showing a much stronger leverage position than at the beginning of the historical period.</p></div>
+    <div class="thesis-card"><div class="eyebrow">FY26</div><div class="big">6.8%</div><p>FY26 consolidated EBITDA margin was 6.8%, with 1.1% EBIT margin and a continuing-operations net loss of ₹1,377 Cr.</p></div>
+  </div>
+</div></section>
+
+<section id="peers"><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">05 — Competitive context</div><h2>Tata Motors vs peers</h2></div><p>Indicative comparison using the peer figures supplied for the project. Final valuation multiples should use one common market-data date.</p></div>
+  <div class="peers">
+    <article class="peer"><h3>Tata Motors</h3><div class="bar"><div class="barlabel"><span>EBITDA Margin</span><b>6.80%</b></div><div class="barline"><i style="width:34%"></i></div></div><div class="bar"><div class="barlabel"><span>ROE</span><b>−1.16%</b></div><div class="barline"><i style="width:5%"></i></div></div><div class="bar"><div class="barlabel"><span>Debt / Equity</span><b>0.59×</b></div><div class="barline"><i style="width:30%"></i></div></div></article>
+    <article class="peer"><h3>Mahindra & Mahindra</h3><div class="bar"><div class="barlabel"><span>EBITDA Margin</span><b>~20.4%</b></div><div class="barline"><i style="width:100%"></i></div></div><div class="bar"><div class="barlabel"><span>ROE</span><b>~20.1%</b></div><div class="barline"><i style="width:100%"></i></div></div><div class="bar"><div class="barlabel"><span>Debt / Equity</span><b>~0.01×</b></div><div class="barline"><i style="width:2%"></i></div></div></article>
+    <article class="peer"><h3>Maruti Suzuki</h3><div class="bar"><div class="barlabel"><span>EBITDA Margin</span><b>~11.7%</b></div><div class="barline"><i style="width:57%"></i></div></div><div class="bar"><div class="barlabel"><span>ROE</span><b>~14–15%</b></div><div class="barline"><i style="width:73%"></i></div></div><div class="bar"><div class="barlabel"><span>Debt / Equity</span><b>~0×</b></div><div class="barline"><i style="width:1%"></i></div></div></article>
+  </div>
+  <div class="tablewrap" style="margin-top:18px"><table><thead><tr><th>Metric</th><th>Tata Motors</th><th>M&M</th><th>Maruti Suzuki</th></tr></thead><tbody>
+    <tr><td>Revenue Growth</td><td>-23.68%*</td><td>~24.8%</td><td>~20.2%</td></tr><tr><td>EBITDA Margin</td><td>6.80%</td><td>~20.4%</td><td>~11.7%</td></tr><tr><td>Net Profit Margin</td><td>-0.41%</td><td>~10.6%</td><td>~8%</td></tr><tr><td>ROE</td><td>-1.16%</td><td>~20.1%</td><td>~14–15%</td></tr><tr><td>Debt / Equity</td><td>0.38×</td><td>~0.01×</td><td>~0×</td></tr>
+  </tbody></table></div>
+</div></section>
+
+<section id="valuation"><div class="wrap reveal">
+  <div class="sectionhead">
+    <div><div class="eyebrow">06 — Valuation</div><h2>Market-based comparison</h2></div>
+    <p>Valuation inputs are kept on one common market date and methodology so Tata Motors, M&amp;M and Maruti Suzuki can be compared consistently.</p>
+  </div>
+
+  <div class="valuation-date">
+    <span>COMMON VALUATION BASIS</span>
+    <strong>30 March 2026</strong>
+    <small>Last trading session before 31 March FY-end</small>
+  </div>
+
+  
+<div class="valuation upgraded-valuation">
+  <div class="valuation-summary-row">
+    <div class="valuation-method-card">
+      <span class="valuation-mini-label">VALUATION DATE</span>
+      <strong>30 Mar 2026</strong>
+      <small>Common market date across all three companies</small>
+    </div>
+    <div class="valuation-method-card">
+      <span class="valuation-mini-label">VALUATION METHOD</span>
+      <strong>Relative Valuation</strong>
+      <small>P/E · P/B · EV/EBITDA · Dividend Yield</small>
+    </div>
+    <div class="valuation-method-card">
+      <span class="valuation-mini-label">PEER SET</span>
+      <strong>TMPV · M&amp;M · Maruti</strong>
+      <small>Passenger-vehicle peer context</small>
+    </div>
+  </div>
+
+  <div class="valuation-table-card">
+    <div class="valuation-table-head">
+      <div>
+        <span class="valuation-mini-label">MARKET-BASED COMPARISON</span>
+        <h3>Relative valuation snapshot</h3>
+      </div>
+      <span class="valuation-source-note">FY26 financial basis</span>
+    </div>
+
+    <div class="valuation-table-scroll">
+      <table class="valuation-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Tata Motors PV</th>
+            <th>Mahindra &amp; Mahindra</th>
+            <th>Maruti Suzuki</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Share Price · 30 Mar 2026</td>
+            <td>₹296.20</td>
+            <td>₹2,954.70</td>
+            <td>₹12,306.00</td>
+          </tr>
+          <tr>
+            <td>Market Capitalization</td>
+            <td>₹1,09,072 Cr</td>
+            <td>₹3.67 L Cr*</td>
+            <td>₹3.86 L Cr*</td>
+          </tr>
+          <tr>
+            <td>Enterprise Value</td>
+            <td>₹95,400 Cr*</td>
+            <td>₹3.48 L Cr*</td>
+            <td>₹3.73 L Cr*</td>
+          </tr>
+          <tr class="multiple-row">
+            <td>P/E</td>
+            <td>1.24×*</td>
+            <td>~20.0×*</td>
+            <td>~25.0×*</td>
+          </tr>
+          <tr class="multiple-row">
+            <td>P/B</td>
+            <td>~4.37×*</td>
+            <td>~4.0×*</td>
+            <td>~4.2×*</td>
+          </tr>
+          <tr class="multiple-row">
+            <td>EV / EBITDA</td>
+            <td>~31.0×*</td>
+            <td>~9.1×*</td>
+            <td>~16.0×*</td>
+          </tr>
+          <tr>
+            <td>Dividend Yield</td>
+            <td>~0.9%*</td>
+            <td>~0.7%*</td>
+            <td>~0.7%*</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="valuation-footnote">*Indicative calculated figures. Market prices are fixed to 30 March 2026; FY26 consolidated financial inputs are used for the relative-multiple framework. Exact peer market-cap, debt, cash and book-value inputs should be reconciled to each company's FY26 filing before publication as an investment recommendation.</p>
+  </div>
+
+  <div class="valuation-insight-grid">
+    <article class="valuation-insight">
+      <span class="valuation-num">01</span>
+      <div>
+        <strong>What the multiples suggest</strong>
+        <p>FY26 valuation should be interpreted on the Tata Motors Passenger Vehicles consolidated continuing-operations basis. P/E, EV/EBITDA and balance-sheet measures should use the same reporting perimeter.</p>
+      </div>
+    </article>
+    <article class="valuation-insight">
+      <span class="valuation-num">02</span>
+      <div>
+        <strong>Relative conclusion</strong>
+        <p>The peer set shows stronger profitability and more established earnings support at M&amp;M and Maruti. Tata Motors PV therefore needs a recovery in margins and cash generation to justify a stronger relative valuation.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="valuation-formula">
+    <span>CALCULATION FRAMEWORK</span>
+    <div>
+      <b>Market Cap</b> = Share Price × Shares Outstanding
+      <i>·</i>
+      <b>EV</b> = Market Cap + Debt − Cash
+      <i>·</i>
+      <b>P/E</b> = Price ÷ EPS
+      <i>·</i>
+      <b>EV/EBITDA</b> = EV ÷ EBITDA
+    </div>
+  </div>
+</div>
+
+
+  <div class="valuation-company-strip">
+    <span>PEER SET</span>
+    <strong>Tata Motors Passenger Vehicles</strong>
+    <i>vs.</i>
+    <strong>Mahindra &amp; Mahindra</strong>
+    <i>vs.</i>
+    <strong>Maruti Suzuki India</strong>
+  </div>
+</div></section>
+
+
+
+<section id="cash-generation"><div class="wrap reveal">
+  <div class="sectionhead">
+    <div><div class="eyebrow">05 — Cash generation</div><h2>Operating cash → CAPEX → free cash flow.</h2></div>
+    <p>A five-year view of how operating cash was converted into investment spending and the resulting calculated free cash flow.</p>
+  </div>
+
+  <div class="cash-flow-flow">
+    <div class="cash-flow-head" id="cashYearTabs">
+      <button class="cash-year-tab" data-cash-year="0">FY22</button>
+      <button class="cash-year-tab" data-cash-year="1">FY23</button>
+      <button class="cash-year-tab active" data-cash-year="2">FY24</button>
+      <button class="cash-year-tab" data-cash-year="3">FY25</button>
+      <button class="cash-year-tab" data-cash-year="4">FY26</button>
+    </div>
+    <div class="cash-flow-years">
+      <article class="cash-year" data-cash-card="0"><div class="cash-label">OPERATING CASH FLOW</div><strong>₹14,283 Cr</strong><div class="cash-arrow">↓</div><div class="cash-label">CAPEX</div><strong>₹14,876 Cr</strong><div class="cash-arrow">↓</div><div class="cash-fcf negative">−₹593 Cr</div><span>FCF</span></article>
+      <article class="cash-year" data-cash-card="1"><div class="cash-label">OPERATING CASH FLOW</div><strong>₹35,388 Cr</strong><div class="cash-arrow">↓</div><div class="cash-label">CAPEX</div><strong>₹18,647 Cr</strong><div class="cash-arrow">↓</div><div class="cash-fcf positive">₹16,741 Cr</div><span>FCF</span></article>
+      <article class="cash-year peak active" data-cash-card="2"><div class="cash-label">OPERATING CASH FLOW</div><strong>₹67,915 Cr</strong><div class="cash-arrow">↓</div><div class="cash-label">CAPEX</div><strong>₹31,183 Cr</strong><div class="cash-arrow">↓</div><div class="cash-fcf positive">₹36,732 Cr</div><span>FCF · PEAK</span></article>
+      <article class="cash-year" data-cash-card="3"><div class="cash-label">OPERATING CASH FLOW</div><strong>₹63,102 Cr</strong><div class="cash-arrow">↓</div><div class="cash-label">CAPEX</div><strong>₹37,068 Cr</strong><div class="cash-arrow">↓</div><div class="cash-fcf positive">₹26,034 Cr</div><span>FCF</span></article>
+      <article class="cash-year" data-cash-card="4"><div class="cash-label">OPERATING CASH FLOW</div><strong>₹13,041 Cr</strong><div class="cash-arrow">↓</div><div class="cash-label">CAPEX</div><strong>₹36,236 Cr</strong><div class="cash-arrow">↓</div><div class="cash-fcf negative">−₹23,195 Cr</div><span>FCF · NEGATIVE</span></article>
+    </div>
+  </div>
+
+  <div class="cash-detail-panel" id="cashDetailPanel">
+    <div><span class="eyebrow" id="cashDetailYear">FY24</span><h3 id="cashDetailTitle">Peak cash-generation year</h3><p id="cashDetailText">Operating cash flow comfortably exceeded CAPEX, producing the strongest calculated FCF in the five-year period.</p></div>
+    <div class="cash-detail-metrics">
+      <div><span>OCF</span><strong id="cashDetailOCF">₹67,915 Cr</strong></div>
+      <div><span>CAPEX</span><strong id="cashDetailCapex">₹31,183 Cr</strong></div>
+      <div><span>FCF</span><strong id="cashDetailFCF">₹36,732 Cr</strong></div>
+    </div>
+  </div>
+  </div>
+
+  <div class="cash-takeaway">
+    <div><span class="eyebrow">ANALYST TAKEAWAY</span><h3>Cash generation peaked in FY24 before reversing sharply in FY26.</h3></div>
+    <p>Calculated FCF remained positive through FY25. FY26 is shown separately using Tata Motors' reported consolidated free cash flow of ₹(26,823) Cr after the demerger.</p>
+  </div>
+  <div class="cash-formula"><span>Calculated FCF</span><strong>Operating Cash Flow − CAPEX</strong></div>
+</div></section>
+<section id="methodology"><div class="wrap reveal">
+  <div class="sectionhead">
+    <div><div class="eyebrow">07 — Research methodology</div><h2>How the analysis was built.</h2></div>
+    <p>Follow the actual workflow behind the Tata Motors research — from raw annual-report data to the final investment conclusion.</p>
+  </div>
+
+  <div class="method-flow">
+    <div class="method-node active" data-step="data">
+      <div class="method-icon">01</div>
+      <div class="method-label">DATA</div>
+      <h3>Collect</h3>
+      <p>Build the FY22–FY26 consolidated dataset.</p>
+    </div>
+    <div class="method-arrow">→</div>
+    <div class="method-node" data-step="clean">
+      <div class="method-icon">02</div>
+      <div class="method-label">CLEAN</div>
+      <h3>Structure</h3>
+      <p>Organize financial and operating variables consistently.</p>
+    </div>
+    <div class="method-arrow">→</div>
+    <div class="method-node" data-step="calculate">
+      <div class="method-icon">03</div>
+      <div class="method-label">ANALYZE</div>
+      <h3>Calculate</h3>
+      <p>Derive growth, margins, returns, leverage and Calculated FCF.</p>
+    </div>
+    <div class="method-arrow">→</div>
+    <div class="method-node" data-step="compare">
+      <div class="method-icon">04</div>
+      <div class="method-label">COMPARE</div>
+      <h3>Benchmark</h3>
+      <p>Compare Tata Motors with selected automotive peers.</p>
+    </div>
+    <div class="method-arrow">→</div>
+    <div class="method-node" data-step="conclude">
+      <div class="method-icon">05</div>
+      <div class="method-label">OUTPUT</div>
+      <h3>Conclude</h3>
+      <p>Turn the evidence into charts and an investment thesis.</p>
+    </div>
+  </div>
+
+  <div class="method-detail" id="methodDetail">
+    <div class="method-detail-left">
+      <span class="eyebrow" id="methodDetailEyebrow">01 — DATA</span>
+      <h3 id="methodDetailTitle">Collect the raw information</h3>
+      <p id="methodDetailText">The analysis starts with Tata Motors annual-report data for FY22–FY25, with FY26 consolidated consolidated results treated separately.</p>
+    </div>
+    <div class="method-detail-right" id="methodDetailItems">
+      <span>Annual reports</span><span>Revenue</span><span>EBITDA</span><span>Debt</span><span>Cash flow</span><span>Vehicle sales</span>
+    </div>
+  </div>
+
+  <div class="method-result">
+    <div><span class="eyebrow">Research pipeline</span><h3>Raw data → Financial metrics → Visual evidence → Business interpretation</h3></div>
+    <div class="pipeline-stat"><strong>5</strong><span>Years</span></div>
+    <div class="pipeline-stat"><strong>10+</strong><span>Core metrics</span></div>
+    <div class="pipeline-stat"><strong>10</strong><span>Charts</span></div>
+  </div>
+</div></section>
+
+
+<section><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">08 — Skills demonstrated</div><h2>Tools behind the work.</h2></div></div>
+  <div class="skills">
+    <span class="skill">Financial Statement Analysis</span><span class="skill">Ratio Analysis</span><span class="skill">Financial Modelling</span><span class="skill">Valuation</span><span class="skill">Excel</span><span class="skill">Python</span><span class="skill">Pandas</span><span class="skill">SQL</span><span class="skill">Data Visualization</span><span class="skill">Business Analytics</span><span class="skill">Research</span><span class="skill">UI / UX</span>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap reveal">
+  <div class="about"><div><div class="eyebrow">About me</div><h2>Tanmay Gupta</h2><p>Computer Science student interested in finance, analytics, business and product. I enjoy turning complex information into clear visual systems and analytical stories.</p><div class="actions"><a class="btn primary" href="#work">View work</a><a class="btn" href="#top">Back to top ↑</a></div></div>
+  <div class="card"><div class="eyebrow">Portfolio roadmap</div><h3 style="font-family:'Space Grotesk';font-size:25px">Building toward a research-ready portfolio.</h3><p>Next additions: complete the valuation module, publish the fraud-detection project, and connect GitHub / CV / LinkedIn.</p></div></div>
+</div></section>
+
+
+<section id="sources"><div class="wrap reveal">
+  <div class="sectionhead"><div><div class="eyebrow">Data sources</div><h2>Where the numbers come from.</h2></div><p>Primary company filings are preferred for the financial dataset and FY26 comparability adjustments.</p></div>
+  <div class="source-cards">
+    <a class="source-card" href="https://nsearchives.nseindia.com/annual_reports/AR_29395_TMPV_2025_2026_A_21445169_15062026215933.pdf" target="_blank"><strong>FY26 Integrated Annual Report</strong><span>FY26 consolidated consolidated revenue, margins, PAT, FCF and net cash.</span></a>
+    <a class="source-card" href="https://cv.tatamotors.com/annual-reports" target="_blank"><strong>Tata Motors Annual Reports</strong><span>FY26 annual report archive and historical reports</span></a>
+    <a class="source-card" href="https://www.tatamotors.com/" target="_blank"><strong>Tata Motors Investor Materials</strong><span>Financial results and investor presentations</span></a>
+  </div>
+</div></section>
+<footer><div class="wrap footerin"><div>© 2026 Tanmay Gupta</div><div>Finance · Data · Business · Research</div></div>
+<div class="footer-social" style="display:flex;gap:16px;align-items:center;margin-top:10px;">
+  <a href="https://www.linkedin.com/in/tanmay-gupta-0639012b0/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">LinkedIn ↗</a>
+  <a href="https://github.com/Guptatanmay28" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">GitHub ↗</a>
+  <a href="mailto:guptatanmay2806@gmail.com" style="color:inherit;text-decoration:none;">Email ↗</a>
+</div></footer>
+
+<script>
+/* ---------- Theme controller ---------- */
+(function(){
+  const root=document.documentElement;
+  const toggle=document.getElementById("themeToggle");
+  if(!toggle) return;
+  const saved=localStorage.getItem("portfolio-theme");
+  const preferred=window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  const initial=saved || (preferred ? "light" : "dark");
+
+  function applyTheme(theme){
+    root.setAttribute("data-theme",theme);
+    const light=theme==="light";
+    toggle.querySelector(".theme-icon").textContent=light?"☾":"☼";
+    toggle.querySelector(".theme-label").textContent=light?"Dark":"Light";
+    toggle.setAttribute("aria-label",light?"Switch to dark mode":"Switch to light mode");
+  }
+
+  applyTheme(initial);
+  toggle.addEventListener("click",()=>{
+    const next=root.getAttribute("data-theme")==="light"?"dark":"light";
+    localStorage.setItem("portfolio-theme",next);
+    applyTheme(next);
+  });
+})();
+
+const years=['FY22','FY23','FY24','FY25','FY26'];
+const data={
+ Revenue:[278453.62,345966.97,437928,439695,335582],
+ EBITDA:[26731.54,37018.46,62798,57649,22912],
+ DebtEquity:[3.36,2.39,1.03,.51,.59],
+ OCF:[14282.83,35388,67915,63102,13041],
+ CAPEX:[14876,18647,31183,37068,38893],
+ NetDebt:[126057,93773,55485,28150,30710],
+ Profit:[11234.70,2353.49,31806.75,28149,-1377],
+ EPS:[29.88,6.29,81.95,65.01,4.43],
+ Margin:[9.60,10.70,14.30,13.10,6.80],
+ EBITMargin:[0.70,3.60,8.30,7.90,1.10],
+ NetProfitMargin:[4.00,0.70,7.30,6.40,-0.41],
+ ROE:[23.00,4.47,34.17,22.93,null],
+ ROCE:[1.11,8.51,24.17,24.77,null],
+ Vehicles:[1033904,1335819,1380315,1341969,949501],
+ CalculatedFCF:[-593.17,16741,36732,26034,-25852],
+ ReportedFCF:[null,null,26925,5900,-26823]
+};
+const fy26Basis={revenue:335582, ebitdaMargin:6.80, ebitMargin:1.10, pat:-1377, eps:4.43, debtEquity:0.59, netDebt:30710, fcf:-26823, vehicles:949501};
+const fmt=(x)=>x.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+const rows=[
+ ['Revenue',...data.Revenue.map(fmt)],['EBITDA',...data.EBITDA.map(fmt)],
+ ['EBIT / Underlying EBIT',...[1949.17,12454,35910,34697,3691.40].map(fmt)],
+ ['PBT / (Loss) before tax',...[7003.41,3057.55,27955.11,33780,2519].map(fmt)],
+ ['Net Profit / (Loss)',...[11234.70,2353.49,31806.75,28149,-1377].map(fmt)],
+ ['Basic EPS (₹)',...[29.88,6.29,81.95,65.01,4.43].map(fmt)],
+ ['Total Assets',...[330619.93,336081.38,370663.96,378642,381922].map(fmt)],
+ ['Total Equity',...[48843.30,52599.51,93093.93,122754,118842].map(fmt)],
+ ['Total Debt',...[164216,125660,95500.09,62499,69953].map(fmt)],
+ ['Cash & Cash Equivalents',...[38159.01,31886.95,40014.76,34349,22880].map(fmt)],
+ ['Operating Cash Flow',...data.OCF.map(fmt)],['CAPEX',...data.CAPEX.map(fmt)],
+ ['Vehicle Sales (Units)',...data.Vehicles.map(x=>x.toLocaleString('en-IN'))]
+];
+document.getElementById('financialTable').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v}</td>`).join('')}</tr>`).join('');
+document.getElementById('financialTable').insertAdjacentHTML('afterend','<tr class="table-note"><td colspan=6><small>FY26 balance-sheet and cash-flow figures are from Tata Motors Passenger Vehicles FY26 consolidated financial statements. FY26 CAPEX is shown as ₹38,893 Cr; reported consolidated FCF was ₹(26,823) Cr and consolidated net debt was ₹30,710 Cr.</small></td></tr>');
+
+const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#b9c0cb'}}},scales:{x:{ticks:{color:'#9aa4b2'},grid:{color:'#202733'}},y:{ticks:{color:'#9aa4b2'},grid:{color:'#202733'}}}};
+
+
+
+
+const methodContent={
+ data:{
+  eyebrow:"01 — DATA",title:"Collect the raw information",
+  text:"The analysis starts with Tata Motors annual-report data for FY22–FY25, with FY26 consolidated consolidated results treated separately.",
+  items:["Annual reports","Revenue","EBITDA","Debt","Cash flow","Vehicle sales"]
+ },
+ clean:{
+  eyebrow:"02 — CLEAN",title:"Structure the five-year dataset",
+  text:"Financial and operating variables are standardized into one comparable five-year dataset so that trends and ratios can be calculated consistently.",
+  items:["FY22–FY26","₹ crore","EPS","Units","Consolidated","Comparable years"]
+ },
+ calculate:{
+  eyebrow:"03 — ANALYZE",title:"Calculate the financial signals",
+  text:"The raw figures are converted into growth rates, margins, ROE, ROCE, leverage measures, interest coverage, current ratio and free cash flow.",
+  items:["Growth","Margins","ROE / ROCE","Debt / Equity","Calculated FCF","Interest coverage"]
+ },
+ compare:{
+  eyebrow:"04 — COMPARE",title:"Benchmark against peers",
+  text:"Tata Motors is evaluated alongside Mahindra & Mahindra and Maruti Suzuki using profitability, growth, returns and leverage indicators.",
+  items:["Tata Motors","M&M","Maruti Suzuki","Margins","ROE","Leverage"]
+ },
+ conclude:{
+  eyebrow:"05 — OUTPUT",title:"Interpret the evidence",
+  text:"Charts, dashboards and the investment thesis communicate what changed, why it matters and where the major strengths and risks appear in the five-year story.",
+  items:["10 charts","Interactive dashboard","Peer comparison","Valuation","Strengths","Risks"]
+ }
+};
+document.querySelectorAll(".method-node").forEach(node=>{
+ node.addEventListener("click",()=>{
+  document.querySelectorAll(".method-node").forEach(n=>n.classList.remove("active"));
+  node.classList.add("active");
+  const d=methodContent[node.dataset.step];
+  document.getElementById("methodDetailEyebrow").textContent=d.eyebrow;
+  document.getElementById("methodDetailTitle").textContent=d.title;
+  document.getElementById("methodDetailText").textContent=d.text;
+  document.getElementById("methodDetailItems").innerHTML=d.items.map(x=>`<span>${x}</span>`).join("");
+ });
+});
+
+
+
+const correctedCharts = {
+  revenue: {label:"Revenue", title:"Revenue trend — ₹ crore", datasets:[
+    {label:"Revenue (₹ Cr)",data:data.Revenue}
+  ]},
+  profitability: {label:"Profitability", title:"EBITDA & profitability margins", datasets:[
+    {label:"EBITDA (₹ Cr)",data:data.EBITDA,axis:"money"},
+    {label:"EBITDA Margin (%)",data:data.Margin,axis:"percent"},
+    {label:"EBIT Margin (%)",data:data.EBITMargin,axis:"percent"},
+    {label:"Net Profit Margin (%)",data:data.NetProfitMargin,axis:"percent"}
+  ]},
+  cash: {label:"Cash Flow", title:"Cash generation — ₹ crore", datasets:[
+    {label:"Operating Cash Flow",data:data.OCF},
+    {label:"CAPEX",data:data.CAPEX},
+    {label:"Calculated FCF (OCF−CAPEX)",data:data.CalculatedFCF}
+  ]},
+  leverage: {label:"Leverage", title:"Debt & net debt — ₹ crore", datasets:[
+    {label:"Total Debt",data:[164216,125660,95500.09,62499,69953]},
+    {label:"Net Debt",data:data.NetDebt}
+  ]},
+  operations: {label:"Operations", title:"Vehicle volumes — units", datasets:[
+    {label:"Vehicle Sales",data:data.Vehicles}
+  ]}
+};
+const chartColors=["#8df58a","#b8c1cd","#8bb7ff"];
+let mainAnalysisChart;
+
+function renderAnalysisChart(key){
+  const cfg=correctedCharts[key];
+  document.getElementById("chartEyebrow").textContent=cfg.label;
+  document.getElementById("chartHeading").textContent=cfg.title;
+  if(mainAnalysisChart) mainAnalysisChart.destroy();
+
+  const datasets=cfg.datasets.map((d,i)=>({
+    label:d.label,data:d.data,borderColor:chartColors[i],backgroundColor:chartColors[i],
+    borderWidth:2,borderRadius:6,tension:.35,fill:false,
+    yAxisID:d.axis==="percent"?"yPercent":"yMoney"
+  }));
+
+  const scales={
+    x:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}},
+    yMoney:{position:"left",ticks:{color:"#9aa4b2",callback:v=>v.toLocaleString("en-IN")},grid:{color:"#202733"}}
+  };
+  if(key==="profitability"){
+    scales.yPercent={position:"right",ticks:{color:"#9aa4b2",callback:v=>v+"%"},grid:{drawOnChartArea:false}};
+  }
+
+  mainAnalysisChart=new Chart(document.getElementById("mainAnalysisChart"),{
+    type:key==="cash"||key==="leverage"?"bar":"line",
+    data:{labels:years,datasets},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{labels:{color:"#b9c0cb"}}},scales}
+  });
+}
+
+document.querySelectorAll(".chart-tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chart-tab").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  renderAnalysisChart(b.dataset.chart);
+}));
+renderAnalysisChart("revenue");
+
+new Chart(document.getElementById("growthChart"),{
+  type:"bar",
+  data:{labels:years,datasets:[{
+    label:"Revenue growth (%)",
+    data:[null,24.25,26.58,0.40,-8.33],
+    backgroundColor:"#8df58a",borderRadius:6
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#b9c0cb"}}},
+    scales:{x:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}},
+    y:{ticks:{color:"#9aa4b2",callback:v=>v+"%"},grid:{color:"#202733"}}}}
+});
+
+new Chart(document.getElementById("vehicleChart"),{
+  type:"line",
+  data:{labels:years,datasets:[{
+    label:"Vehicle Sales (units)",
+    data:data.Vehicles,
+    borderColor:"#8df58a",backgroundColor:"rgba(141,245,138,.08)",tension:.35,fill:true
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#b9c0cb"}}},
+    scales:{x:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}},
+    y:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}}}}
+});
+
+/* RESTORED INTERACTIVE DASHBOARD */
+const dashState={year:2,metric:"revenue"};
+const dashMetrics={
+ revenue:{title:"Revenue",label:"₹ crore",values:data.Revenue,format:v=>`₹${fmt(v)} Cr`},
+ profit:{title:"Net Profit / Loss",label:"₹ crore",values:data.Profit,format:v=>`${v<0?"−₹":"₹"}${fmt(Math.abs(v))} Cr`},
+ ebitda:{title:"EBITDA",label:"₹ crore",values:data.EBITDA,format:v=>`₹${fmt(v)} Cr`},
+ margin:{title:"EBITDA Margin",label:"%",values:data.Margin,format:v=>`${v.toFixed(2)}%`},
+ debt:{title:"Total Debt",label:"₹ crore",values:[164216,125660,95500.09,62499,69953],format:v=>`₹${fmt(v)} Cr`},
+ fcf:{title:"Calculated Free Cash Flow",label:"₹ crore",values:data.CalculatedFCF,format:v=>`${v<0?"−₹":"₹"}${fmt(Math.abs(v))} Cr`},
+ vehicles:{title:"Vehicle Sales",label:"units",values:data.Vehicles,format:v=>v.toLocaleString("en-IN")}
+};
+const yoyRevenue=[null,24.25,26.58,0.40,null];
+
+function renderDashboard(){
+  const y=dashState.year, metric=dashMetrics[dashState.metric];
+  const rev=data.Revenue[y], margin=data.Margin[y], debt=data.NetDebt[y], fcf=data.CalculatedFCF[y];
+
+  document.querySelectorAll(".year-btn").forEach(b=>b.classList.toggle("active",Number(b.dataset.year)===y));
+  document.getElementById("metricSelect").value=dashState.metric;
+
+  document.getElementById("kRevenue").textContent=`₹${fmt(rev)} Cr`;
+  document.getElementById("kRevenueSub").textContent=yoyRevenue[y]==null?(y===4?"Post-demerger basis":"Base year"):`${yoyRevenue[y]>=0?"+":""}${yoyRevenue[y].toFixed(2)}% comparable YoY`;
+  document.getElementById("kMargin").textContent=`${margin.toFixed(2)}%`;
+  document.getElementById("kMarginSub").textContent=margin>=13?"Strong margin period":margin<8?"Sharp margin pressure":"Moderate margin";
+  document.getElementById("kDebt").textContent=`₹${fmt(debt)} Cr`;
+  document.getElementById("kDebtSub").textContent=`Debt / Equity ${data.DebtEquity[y].toFixed(2)}×`;
+  document.getElementById("kFcf").textContent=`${fcf<0?"−₹":"₹"}${fmt(Math.abs(fcf))} Cr`;
+  document.getElementById("kFcfSub").textContent=fcf<0?"Negative cash generation":"Positive cash generation";
+
+  document.getElementById("metricTitle").textContent=metric.title;
+  document.getElementById("profileEyebrow").textContent=`${years[y]} snapshot`;
+  document.getElementById("profileNumber").textContent=metric.format(metric.values[y]);
+  document.getElementById("pEps").textContent=`${data.EPS[y]<0?"−₹":"₹"}${Math.abs(data.EPS[y]).toFixed(2)}`;
+  document.getElementById("pRoe").textContent=data.ROE[y]==null?"N/A":`${data.ROE[y].toFixed(2)}%`;
+  document.getElementById("pVehicles").textContent=(data.Vehicles[y]/1000000).toFixed(2)+"M";
+  document.getElementById("pFcf").textContent=fcf==null?"N/A":`${fcf<0?"−₹":"₹"}${fmt(Math.abs(fcf))} Cr`;
+
+  const titles=["Base year / turnaround begins","Strong recovery","Peak financial performance","Deleveraging with solid profitability","FY26 consolidated"];
+  const texts=[
+    "FY22 provides the starting point: high leverage and modest operating cash generation.",
+    "FY23 shows a strong recovery in revenue, EBITDA and operating cash flow while leverage begins to fall.",
+    "FY24 is the strongest overall year in the five-year historical series, with peak revenue, EBITDA, ROE and operating cash flow.",
+    "FY25 maintained positive calculated free cash flow and very low leverage despite slower revenue growth.",
+    "FY26 continuing operations reported consolidated revenue of ₹335,582 Cr, EBITDA margin of 6.8%, EBIT margin of 1.1% and PAT of ₹(1,377) Cr. The year was affected by JLR headwinds including the cyber incident, tariffs, China luxury tax and adverse commodities."
+  ];
+  document.getElementById("profileTitle").textContent=titles[y];
+  document.getElementById("profileText").textContent=texts[y];
+  document.getElementById("dashboardInsight").innerHTML=`<span class="dash-dot"></span><span class="insight-label">ANALYST TAKEAWAY</span><strong> ${texts[y]}`;
+
+  if(window.dashboardChart) window.dashboardChart.destroy();
+  window.dashboardChart=new Chart(document.getElementById("interactiveChart"),{
+    type:"line",
+    data:{labels:years,datasets:[
+      {label:metric.title,data:metric.values,borderColor:"#8df58a",backgroundColor:"rgba(141,245,138,.08)",pointBackgroundColor:"#8df58a",pointRadius:4,tension:.3,fill:true},
+      {label:`Selected: ${years[y]}`,data:metric.values.map((v,i)=>i===y?v:null),borderColor:"#b8c1cd",backgroundColor:"#b8c1cd",pointRadius:7,pointHoverRadius:9,showLine:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{labels:{color:"#b9c0cb"}}},
+      scales:{x:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}},
+      y:{ticks:{color:"#9aa4b2",callback:v=>metric.label==="%"?v+"%":v.toLocaleString("en-IN")},grid:{color:"#202733"}}}}
+  });
+}
+document.querySelectorAll(".year-btn").forEach(b=>b.addEventListener("click",()=>{dashState.year=Number(b.dataset.year);renderDashboard()}));
+document.getElementById("metricSelect").addEventListener("change",e=>{dashState.metric=e.target.value;renderDashboard()});
+renderDashboard();
+
+/* RESTORED CASH GENERATION CHART */
+const cashCanvas=document.getElementById("cashChart");
+if(cashCanvas){
+  new Chart(cashCanvas,{
+    data:{labels:years,datasets:[
+      {type:"bar",label:"Operating Cash Flow",data:data.OCF,backgroundColor:"#8df58a",borderRadius:5},
+      {type:"bar",label:"CAPEX",data:data.CAPEX,backgroundColor:"#b8c1cd",borderRadius:5},
+      {type:"line",label:"Free Cash Flow (reported for FY26)",data:data.CalculatedFCF,borderColor:"#8bb7ff",backgroundColor:"#8bb7ff",borderWidth:2,tension:.3,pointRadius:4,fill:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{labels:{color:"#b9c0cb"}}},
+      scales:{x:{ticks:{color:"#9aa4b2"},grid:{color:"#202733"}},
+      y:{ticks:{color:"#9aa4b2",callback:v=>v.toLocaleString("en-IN")},grid:{color:"#202733"}}}}
+  });
+}
+
+
+/* ---------- Interactive cash-generation explorer ---------- */
+(function(){
+  const details=[
+    ["FY22","Base-year cash pressure","Operating cash flow was slightly below CAPEX, resulting in negative calculated FCF.","₹14,283 Cr","₹14,876 Cr","−₹593 Cr"],
+    ["FY23","Cash generation recovered","Operating cash flow more than covered CAPEX, turning calculated FCF positive.","₹35,388 Cr","₹18,647 Cr","₹16,741 Cr"],
+    ["FY24","Peak cash-generation year","Operating cash flow comfortably exceeded CAPEX, producing the strongest calculated FCF in the five-year period.","₹67,915 Cr","₹31,183 Cr","₹36,732 Cr"],
+    ["FY25","Positive FCF maintained","Cash generation remained strong even as CAPEX increased, keeping calculated FCF positive.","₹63,102 Cr","₹37,068 Cr","₹26,034 Cr"],
+    ["FY26","FY26 consolidated","Tata Motors reported ₹(26,823) Cr consolidated free cash flow and ₹30,710 Cr net debt net cash.","₹13,041 Cr","₹36,236 Cr","−₹23,195 Cr"]
+  ];
+  const tabs=document.querySelectorAll(".cash-year-tab");
+  const cards=document.querySelectorAll(".cash-year");
+  if(!tabs.length)return;
+  function selectCashYear(i){
+    tabs.forEach((t,n)=>t.classList.toggle("active",n===i));
+    cards.forEach((c,n)=>c.classList.toggle("active",n===i));
+    const d=details[i];
+    document.getElementById("cashDetailYear").textContent=d[0];
+    document.getElementById("cashDetailTitle").textContent=d[1];
+    document.getElementById("cashDetailText").textContent=d[2];
+    document.getElementById("cashDetailOCF").textContent=d[3];
+    document.getElementById("cashDetailCapex").textContent=d[4];
+    const fcf=document.getElementById("cashDetailFCF");
+    fcf.textContent=d[5];
+    fcf.style.color=d[5].startsWith("−")?"var(--danger)":"var(--accent)";
+  }
+  tabs.forEach(t=>t.addEventListener("click",()=>selectCashYear(Number(t.dataset.cashYear))));
+  cards.forEach(c=>c.addEventListener("click",()=>selectCashYear(Number(c.dataset.cashCard))));
+})();
+
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+<script>
+// FINAL interaction layer: valuation cards + cash-year selection + richer chart tooltips
+(function(){
+  const valuationData={
+    marketcap:{title:'Market Cap',body:'Common valuation date: 30 March 2026. Closing prices: TMPV ₹296.20, M&M ₹2,954.70, Maruti Suzuki ₹12,306.00.'},
+    ev:{title:'Enterprise Value',body:'Calculated consistently as Market Cap + Debt − Cash. Use FY26 balance-sheet values from each company’s annual report.'},
+    multiples:{title:'P/E · P/B',body:'P/E uses the common market-date price and FY26 EPS. P/B uses market capitalization relative to FY26 book equity.'},
+    evEbitda:{title:'EV / EBITDA',body:'Enterprise Value divided by the FY26 EBITDA definition used in the project.'},
+    dividend:{title:'Dividend Yield',body:'FY26 dividend per share divided by the 30 March 2026 closing price.'},
+    conclusion:{title:'Valuation Conclusion',body:'Interpret relative valuation together with profitability, leverage and cash generation; avoid treating a single multiple as a standalone recommendation.'}
+  };
+  document.querySelectorAll('.valuation-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const map=['marketcap','ev','multiples','evEbitda','dividend','conclusion'];
+      const i=Number(card.querySelector('.valuation-num')?.textContent||1)-1;
+      const d=valuationData[map[i]]||valuationData.marketcap;
+      let box=document.getElementById('valuationDetail');
+      if(!box){box=document.createElement('div');box.id='valuationDetail';box.className='cash-detail-panel';card.parentElement.after(box)}
+      box.innerHTML='<div><span class="eyebrow">Valuation detail</span><h3>'+d.title+'</h3><p>'+d.body+'</p></div><div class="cash-detail-metrics"><div><span>DATE</span><strong>30 Mar 2026</strong></div><div><span>METHOD</span><strong>Comparable</strong></div><div><span>BASIS</span><strong>FY26</strong></div></div>';
+      box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+  });
+  // Ensure chart tooltip contrast follows theme and points are easy to inspect.
+  const oldRender=window.renderAnalysisChart;
+  if(typeof oldRender==='function'){
+    // Current Chart.js interaction already uses index-mode; keep it and expose point hover.
+  }
+  // Click-to-focus on cash cards.
+  document.querySelectorAll('.cash-year').forEach(card=>card.addEventListener('click',()=>{
+    document.querySelectorAll('.cash-year').forEach(x=>x.classList.remove('active'));
+    card.classList.add('active');
+  }));
+})();
+</script>
+</body>
+</html>
+<style>
+@media(max-width:900px){.valuation{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.valuation{grid-template-columns:1fr}.valuation-date{align-items:flex-start;flex-direction:column;gap:4px}.valuation-card{min-height:155px}}
+</style>

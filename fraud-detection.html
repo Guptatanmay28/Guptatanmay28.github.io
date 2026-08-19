@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fraud Detection & Transaction Risk Analysis — Tanmay Gupta</title>
+<style>
+:root{--bg:#f7f5ef;--ink:#14243b;--muted:#667993;--card:#fffdfa;--border:#dce3e8;--purple:#5a2ac6;--teal:#159f91}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background-image:linear-gradient(rgba(20,36,59,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(20,36,59,.035) 1px,transparent 1px);background-size:46px 46px;line-height:1.6}
+.wrap{max-width:1220px;margin:auto;padding:28px 34px 70px}
+.back{color:var(--muted);text-decoration:none;font-size:14px;font-weight:700}
+.hero{padding:65px 0 40px}.eyebrow,.label{font-size:12px;font-weight:850;letter-spacing:.15em;color:var(--teal);text-transform:uppercase}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-.055em;margin:14px 0 20px;max-width:950px}
+.lead{font-size:19px;color:var(--muted);max-width:900px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;padding:13px 20px;border-radius:8px;text-decoration:none;font-weight:800}.primary{background:var(--purple);color:#fff}.secondary{border:1px solid #a58bdf;color:var(--purple);background:#fffdfa}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.kpi,.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:23px}.kpi strong{display:block;font-size:30px;letter-spacing:-.03em}.kpi span{font-size:13px;color:var(--muted)}
+section{padding:48px 0;border-top:1px solid var(--border)}h2{font-size:31px;letter-spacing:-.03em;margin:6px 0 14px}.sub{color:var(--muted);max-width:850px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--border)}th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tag{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:5px 10px;margin:4px 4px 0 0;font-size:12px;color:#5f7188}
+.callout{background:#f4f7f3;border-left:3px solid var(--teal);padding:18px 20px;border-radius:4px;color:#50647d}
+.note{font-size:13px;color:var(--muted)}.metric-good{color:#168e80;font-weight:850}
+ul{padding-left:21px}.footer{margin-top:30px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:800px){.wrap{padding:22px 18px 50px}.kpis,.grid2,.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.kpis,.grid2,.grid3{grid-template-columns:1fr}h1{font-size:43px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="projects.html">← Back to Projects</a>
+
+<header class="hero">
+<div class="eyebrow">02 — DATA ANALYSIS · MACHINE LEARNING</div>
+<h1>Fraud Detection &amp;<br>Transaction Risk Analysis</h1>
+<p class="lead">An end-to-end fraud analytics project moving from transaction-level exploration and statistical analysis to feature engineering, machine-learning classification, model evaluation and simulated transaction-risk monitoring.</p>
+<div class="hero-actions">
+<a class="btn primary" href="fraud-detection-dashboard.html">Open Risk Dashboard ↗</a>
+<a class="btn secondary" href="projects.html">Back to Projects</a>
+</div>
+</header>
+
+<div class="kpis">
+<div class="kpi"><strong>528,213</strong><span>Working-sample transactions</span></div>
+<div class="kpi"><strong>8,213</strong><span>Fraud cases retained</span></div>
+<div class="kpi"><strong>99.98%</strong><span>Random Forest ROC-AUC</span></div>
+<div class="kpi"><strong>99.73%</strong><span>Random Forest F1</span></div>
+</div>
+
+<section>
+<div class="label">01 — BUSINESS / RESEARCH QUESTION</div>
+<h2>Can transaction-level behavior identify potentially fraudulent activity?</h2>
+<p class="sub">The project investigates whether transaction type, transaction amount, account-balance behavior and engineered behavioral signals can distinguish fraudulent from legitimate transactions.</p>
+<div class="callout"><strong>Decision focus:</strong> identify high-risk transactions while balancing fraud detection against false alerts.</div>
+</section>
+
+<section>
+<div class="label">02 — DATASET</div>
+<h2>PaySim transaction-level data</h2>
+<div class="grid2">
+<div class="card">
+<p>The project uses the PaySim synthetic financial transaction dataset. The working sample retains all fraud cases and samples legitimate transactions for a manageable, portfolio-ready analysis.</p>
+<span class="tag">Transaction type</span><span class="tag">Amount</span><span class="tag">Origin balance</span><span class="tag">Destination balance</span><span class="tag">Time / step</span><span class="tag">Fraud label</span>
+</div>
+<div class="card">
+<h3>Important interpretation</h3>
+<p class="note">PaySim is synthetic. The project demonstrates an analytical workflow and model-development approach; the reported performance should not be treated as production banking performance.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="label">03 — EXPLORATORY DATA ANALYSIS</div>
+<h2>Where does fraud appear in the sample?</h2>
+<div class="card">
+<table><thead><tr><th>Transaction type</th><th>Transactions</th><th>Fraud cases</th><th>Fraud rate</th></tr></thead>
+<tbody>
+<tr><td>TRANSFER</td><td>47,712</td><td>4,097</td><td class="metric-good">8.59%</td></tr>
+<tr><td>CASH_OUT</td><td>186,135</td><td>4,116</td><td class="metric-good">2.21%</td></tr>
+<tr><td>CASH_IN</td><td>114,466</td><td>0</td><td>0%</td></tr>
+<tr><td>PAYMENT</td><td>176,426</td><td>0</td><td>0%</td></tr>
+<tr><td>DEBIT</td><td>3,474</td><td>0</td><td>0%</td></tr>
+</tbody></table>
+<p class="note">The sample shows strong concentration of fraud in TRANSFER and CASH_OUT transactions.</p>
+</div>
+</section>
+
+<section>
+<div class="label">04 — STATISTICAL ANALYSIS</div>
+<h2>Testing whether transaction type is associated with fraud</h2>
+<div class="grid2">
+<div class="card"><h3>Chi-square test</h3><p>Transaction type and fraud status were tested for association rather than relying only on visual patterns.</p><p class="metric-good">Result: statistically significant association in the working sample.</p></div>
+<div class="card"><h3>Why it matters</h3><p>The statistical test supports treating transaction type as a useful predictive signal, while the model still evaluates it alongside balance and amount features.</p></div>
+</div>
+</section>
+
+<section>
+<div class="label">05 — FEATURE ENGINEERING</div>
+<h2>Turning raw transactions into behavioral signals</h2>
+<div class="grid3">
+<div class="card"><h3>Transaction intensity</h3><p>Transaction hour / time-derived variables.</p></div>
+<div class="card"><h3>Balance behavior</h3><p>Origin and destination balance changes.</p></div>
+<div class="card"><h3>Relative amount</h3><p>Amount relative to account balances.</p></div>
+</div>
+<div class="card" style="margin-top:16px">
+<span class="tag">Amount / Origin Balance</span><span class="tag">Amount / Destination Balance</span><span class="tag">Origin Balance Change</span><span class="tag">Destination Balance Change</span><span class="tag">Transaction Hour</span>
+<p class="note">The fraud label is excluded from model inputs to prevent target leakage.</p>
+</div>
+</section>
+
+<section>
+<div class="label">06 — MODEL DEVELOPMENT</div>
+<h2>Baseline vs. non-linear classifier</h2>
+<div class="card">
+<table><thead><tr><th>Model</th><th>Precision</th><th>Recall</th><th>F1</th><th>ROC-AUC</th></tr></thead>
+<tbody>
+<tr><td>Logistic Regression</td><td>24.81%</td><td>95.68%</td><td>39.40%</td><td>99.13%</td></tr>
+<tr><td><strong>Random Forest</strong></td><td class="metric-good">99.82%</td><td class="metric-good">99.63%</td><td class="metric-good">99.73%</td><td class="metric-good">99.98%</td></tr>
+</tbody></table>
+<p class="note">Because fraud is an imbalanced classification problem, precision, recall, F1 and PR-AUC are more informative than accuracy alone.</p>
+</div>
+</section>
+
+<section>
+<div class="label">07 — MODEL INTERPRETATION</div>
+<h2>What signals drive the model?</h2>
+<div class="card">
+<table><thead><tr><th>Feature</th><th>Importance</th></tr></thead>
+<tbody>
+<tr><td>Amount / Origin Balance</td><td>33.04%</td></tr>
+<tr><td>Origin Balance Change</td><td>28.32%</td></tr>
+<tr><td>Old Origin Balance</td><td>9.36%</td></tr>
+<tr><td>New Origin Balance</td><td>7.16%</td></tr>
+<tr><td>Transaction Amount</td><td>6.38%</td></tr>
+</tbody></table>
+<p class="note">Feature importance describes model reliance; it does not establish causal relationships.</p>
+</div>
+</section>
+
+<section>
+<div class="label">08 — RISK DECISIONING</div>
+<h2>From probability to an operational decision</h2>
+<div class="grid3">
+<div class="card"><h3>LOW RISK</h3><p>Allow automatically when predicted fraud probability remains below the chosen review threshold.</p></div>
+<div class="card"><h3>REVIEW</h3><p>Route borderline transactions for additional verification rather than immediately blocking them.</p></div>
+<div class="card"><h3>HIGH RISK</h3><p>Flag transactions above the risk threshold for investigation.</p></div>
+</div>
+<p class="note">The threshold should ultimately be chosen using business costs for missed fraud and false alerts, not model performance alone.</p>
+</section>
+
+<section>
+<div class="label">09 — LIMITATIONS</div>
+<h2>What this project does not claim</h2>
+<div class="card"><ul>
+<li>PaySim is synthetic rather than real banking data.</li>
+<li>The working sample contains all fraud cases and a sampled legitimate population.</li>
+<li>Very high model performance on this dataset should not be assumed to generalize to real financial systems.</li>
+<li>Production deployment would require external validation, threshold calibration, drift monitoring and governance.</li>
+</ul></div>
+</section>
+
+<section>
+<div class="label">10 — CONCLUSION</div>
+<h2>A complete fraud-analytics workflow, not just a model.</h2>
+<p class="sub">The project combines exploratory analysis, statistical reasoning, feature engineering, classification, evaluation and risk decisioning. Random Forest materially outperformed the Logistic Regression baseline in the working sample, while the analysis highlights why model performance must still be interpreted in the context of synthetic data and operational costs.</p>
+</section>
+
+<div class="footer">Python · Pandas · NumPy · Scikit-learn · Statistical Analysis · Data Visualization · Machine Learning</div>
+</div>
+</body>
+</html>
